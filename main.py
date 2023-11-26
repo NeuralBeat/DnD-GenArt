@@ -3,6 +3,7 @@ import os
 import glob
 from utils.dndClass import *
 from utils.dndRace import *
+from utils.dndAlignment import *
 
 
 side_bar_img = "https://i.pinimg.com/564x/05/c1/5a/05c15aca14964af944aac1c638e1d7d2.jpg"
@@ -25,3 +26,4 @@ st.subheader("AI-SUPPORTED CHARACTER ART", anchor=None)
 
 select_race()
 select_class()
+select_aligment()
