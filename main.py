@@ -4,6 +4,7 @@ import glob
 from utils.dndClass import *
 from utils.dndRace import *
 from utils.dndAlignment import *
+from utils.dndCharacterLook import *
 
 
 side_bar_img = "https://i.pinimg.com/564x/05/c1/5a/05c15aca14964af944aac1c638e1d7d2.jpg"
@@ -24,6 +25,20 @@ with st.sidebar:
 st.title("D&D DISGUISE")
 st.subheader("AI-SUPPORTED CHARACTER ART", anchor=None)
 
-select_race()
-select_class()
-select_aligment()
+# Create tabs
+tab1, tab2, tab3 = st.tabs(["CORE", "OPTICS", "EQUIPMENT"])
+
+# Tab 1: Core Attributes (Class, Race, Alignment)
+with tab1:
+    # Call your function for selecting class, race, and alignment
+    select_race()
+    select_class()
+    select_aligment()
+
+# Tab 2: Optics (Character Look)
+with tab2:
+    select_character_look()
+
+# Tab 3: Equipment
+with tab3:
+    pass
