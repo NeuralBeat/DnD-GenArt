@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 def select_class():
     default_class = st.session_state.get('selected_class', '')
@@ -24,6 +25,27 @@ def select_class():
         'Warlock': ['Pact of the Archfey', 'Pact of the Celestial', 'Pact of the Fathomless', 'Pact of the Fiend', 'Pact of the Genie', 'Pact of the Great Old One', 'Pact of the Hexblade'],
         'Wizard': ['Bladesinger', 'Order of the Scribes', 'School of Abjuration', 'School of Conjuration', 'School of Divination', 'School of Enchantment', 'School of Evocation', 'School of Illusion', 'School of Necromancy', 'School of Transmutation', 'War Magic']
     }
+    
+    # Define the path to your images folder
+    images_folder = 'images/classes'
+
+    # Mapping of classes to their images
+    class_images = {
+        'Artificer': 'artificer.jpeg',
+        'Barbarian': 'barbarian.jpeg',
+        'Bard': 'bard.jpeg',
+        'Blood Hunter': 'bloodhunter.png',
+        'Cleric': 'cleric.jpeg',
+        'Druid': 'druid.jpeg',
+        'Monk': 'monk.jpeg',
+        'Fighter': 'fighter.jpeg',
+        'Paladin': 'paladin.jpeg',
+        'Ranger': 'ranger.jpeg',
+        'Rogue': 'rogue.jpeg',
+        'Sorcerer': 'sorcerer.jpeg',
+        'Warlock': 'warlock.jpeg',
+        'Wizard': 'wizard.jpeg'
+    }
 
     ##### INIT SESSION STATES ####
     if 'selected_class' not in st.session_state:
@@ -32,21 +54,35 @@ def select_class():
     if 'selected_subclass' not in st.session_state:
         st.session_state['selected_subclass'] = None
 
-    #### SESSION INTERNAL CLASS SELECTION
-    st.session_state['selected_class'] = st.selectbox(
-    'Select your Class', 
-    classes, 
-    index=classes.index(default_class),
-    key='class_selector'
-    )
+        # Use columns to split the layout
+    col1, col2 = st.columns(2)
+    
+    with col1:
 
-    # Update subclass state based on class selection
-    if st.session_state['selected_class'] in subclasses:
-        st.session_state['selected_subclass'] = st.selectbox(
-            'Select your Subclass', 
-            subclasses[st.session_state['selected_class']],
-            index=0 if default_subclass not in subclasses[st.session_state['selected_class']] else subclasses[st.session_state['selected_class']].index(default_subclass),
-            key='subclass_selector'
+        #### SESSION INTERNAL CLASS SELECTION
+        st.session_state['selected_class'] = st.selectbox(
+        'Select your Class', 
+        classes, 
+        index=classes.index(default_class),
+        key='class_selector'
         )
-    else:
-        st.session_state['selected_subclass'] = ''
+
+        # Update subclass state based on class selection
+        if st.session_state['selected_class'] in subclasses:
+            st.session_state['selected_subclass'] = st.selectbox(
+                'Select your Subclass', 
+                subclasses[st.session_state['selected_class']],
+                index=0 if default_subclass not in subclasses[st.session_state['selected_class']] else subclasses[st.session_state['selected_class']].index(default_subclass),
+                key='subclass_selector'
+            )
+        else:
+            st.session_state['selected_subclass'] = ''
+        
+    with col2:
+        # Create three columns for centering the image
+        spacer1, image_col, spacer2 = st.columns([1, 2, 1])
+        with image_col:
+            # Display image based on selected class
+            if st.session_state['selected_class'] in class_images:
+                image_path = os.path.join(images_folder, class_images[st.session_state['selected_class']])
+                st.image(image_path, caption=None, width=120)
