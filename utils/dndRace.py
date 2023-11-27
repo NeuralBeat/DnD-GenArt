@@ -71,4 +71,4 @@ def select_race():
                 # Display image based on selected class
                 if st.session_state['selected_race'] in race_images:
                     image_path = os.path.join(images_folder, race_images[st.session_state['selected_race']])
-                    st.image(image_path, caption=None, width=150, output_format='PNG')
+                    st.image(image_path, caption=None, width=125, output_format='PNG')
