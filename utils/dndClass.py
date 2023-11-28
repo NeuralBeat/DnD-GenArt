@@ -85,4 +85,4 @@ def select_class():
             # Display image based on selected class
             if st.session_state['selected_class'] in class_images:
                 image_path = os.path.join(images_folder, class_images[st.session_state['selected_class']])
-                st.image(image_path, caption=None, width=120)
+                st.image(image_path, caption=None, width=140)
