@@ -31,20 +31,20 @@ def select_class():
 
     # Mapping of classes to their images
     class_images = {
-        'Artificer': 'artificer.jpeg',
-        'Barbarian': 'barbarian.jpeg',
-        'Bard': 'bard.jpeg',
-        'Blood Hunter': 'bloodhunter.png',
-        'Cleric': 'cleric.jpeg',
-        'Druid': 'druid.jpeg',
-        'Monk': 'monk.jpeg',
-        'Fighter': 'fighter.jpeg',
-        'Paladin': 'paladin.jpeg',
-        'Ranger': 'ranger.jpeg',
-        'Rogue': 'rogue.jpeg',
-        'Sorcerer': 'sorcerer.jpeg',
-        'Warlock': 'warlock.jpeg',
-        'Wizard': 'wizard.jpeg'
+        'Artificer': 'artificer.webp',
+        'Barbarian': 'barbarian.webp',
+        'Bard': 'bard.webp',
+        'Blood Hunter': 'bloodhunter.webp',
+        'Cleric': 'cleric.webp',
+        'Druid': 'druid.webp',
+        'Monk': 'monk.webp',
+        'Fighter': 'fighter.webp',
+        'Paladin': 'paladin.webp',
+        'Ranger': 'ranger.webp',
+        'Rogue': 'rogue.webp',
+        'Sorcerer': 'sorcerer.webp',
+        'Warlock': 'warlock.webp',
+        'Wizard': 'wizard.webp'
     }
 
     ##### INIT SESSION STATES ####
@@ -85,4 +85,4 @@ def select_class():
             # Display image based on selected class
             if st.session_state['selected_class'] in class_images:
                 image_path = os.path.join(images_folder, class_images[st.session_state['selected_class']])
-                st.image(image_path, caption=None, width=90)
+                st.image(image_path, caption=None, width=120)
