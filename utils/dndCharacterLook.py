@@ -49,10 +49,12 @@ def select_character_look():
     
     hair_activation = st.toggle("Hair", value=False, key="hair_activation")
     if hair_activation == True:
-        selected_hair_length = st.select_slider("Select Hair Length", options=list(hair_length.values()))
+        selected_hair_length = st.selectbox("Select Hair Length", options=list(hair_length.values()))
         selected_hair_color = st.select_slider("Select Hair Color", options=list(hair_colors.values()))
-        selected_hair_style_short = st.select_slider("Select Short Hair Style", options=list(hair_style_short.values()))
-        selected_hair_style_long = st.select_slider("Select Long Hair Style", options=list(hair_style_long.values()))
+        if selected_hair_length == 'short':
+            selected_hair_style_short = st.select_slider("Select Short Hair Style", options=list(hair_style_short.values()))
+        else:
+            selected_hair_style_long = st.select_slider("Select Long Hair Style", options=list(hair_style_long.values()))
         
 
     beard_activation = st.toggle("Bearded", value=False, key="beard_activation")
