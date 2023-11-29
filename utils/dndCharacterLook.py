@@ -48,41 +48,31 @@ def select_character_look():
     with col1:
         selected_name = st.text_input("Character Name", key='selected_name')
         selected_age = st.select_slider("Select Age", options=list(ages.values()), key='selected_age')
-
+        if st.session_state['selected_race'] == 'Dragonborn':
+            selected_scale_color = st.select_slider("Select Scale Color", options=list(scale_colors.values()), key='selected_scale_color')
+        if st.session_state['selected_race'] != 'Dragonborn':
+            selected_skin_color = st.select_slider("Select Skin Color", options=list(skin_colors.values()), key='selected_skin_color')
+    
         
     with col2:
         selected_sex = st.radio("Select Sex", options=list(sexes.values()), key='selected_sex', horizontal=True)
         selected_physique = st.select_slider("Select Physique Build", options=list(physiques.values()), key='selected_physique')
         selected_eye_color = st.select_slider("Select Eye Color", options=list(eye_colors.values()), key='selected_eye_color') 
-        
-        
-        
-    if st.session_state['selected_race'] == 'Dragonborn':
-        selected_scale_color = st.select_slider("Select Scale Color", options=list(scale_colors.values()), key='selected_scale_color')
+        if st.session_state['selected_race'] != 'Dragonborn':
+            selected_skin_taint = st.select_slider("Select Taint", options=list(skin_taint.values()), key='selected_skin_taint')
 
-    if st.session_state['selected_race'] != 'Dragonborn':
-        selected_skin_color = st.select_slider("Select Skin Color", options=list(skin_colors.values()), key='selected_skin_color')
+    hair_activation = st.toggle("Hair", value=default_hair_activation, key="hair_activation")
+    if hair_activation == True:
+        selected_hair_length = st.selectbox("Select Hair Length", options=list(hair_length.values()), key='selected_hair_length')
+        selected_hair_color = st.select_slider("Select Hair Color", options=list(hair_colors.values()), key='selected_hair_color')
+        if selected_hair_length == 'short':
+            selected_hair_style_short = st.select_slider("Select Short Hair Style", options=list(hair_style_short.values()), key='selected_hair_style_short')
+        else:
+            selected_hair_style_long = st.select_slider("Select Long Hair Style", options=list(hair_style_long.values()), key='selected_hair_style_long')
     
-    else:
-        selected_skin_color = st.select_slider("Select Skin Color", options=list(skin_colors.values()), key='selected_skin_color')
-        selected_skin_taint = st.select_slider("Select Taint", options=list(skin_taint.values()), key='selected_skin_taint')
-
-        hair_activation = st.toggle("Hair", value=default_hair_activation, key="hair_activation")
-        if hair_activation == True:
-            selected_hair_length = st.selectbox("Select Hair Length", options=list(hair_length.values()), key='selected_hair_length')
-            selected_hair_color = st.select_slider("Select Hair Color", options=list(hair_colors.values()), key='selected_hair_color')
-            if selected_hair_length == 'short':
-                selected_hair_style_short = st.select_slider("Select Short Hair Style", options=list(hair_style_short.values()), key='selected_hair_style_short')
-            else:
-                selected_hair_style_long = st.select_slider("Select Long Hair Style", options=list(hair_style_long.values()), key='selected_hair_style_long')
-    
-        beard_activation = st.toggle("Bearded", value=default_beard_activation, key="beard_activation")
-        if beard_activation == True:
-            selected_beard_style = st.select_slider("Select Beard Style", options=list(beard_style.values()), key='selected_beard_style')   
-    
-
-
-
+    beard_activation = st.toggle("Bearded", value=default_beard_activation, key="beard_activation")
+    if beard_activation == True:
+        selected_beard_style = st.select_slider("Select Beard Style", options=list(beard_style.values()), key='selected_beard_style')   
     
     tattoo_activation = st.toggle("Tattoo", value=default_tattoo_activation, key="tattoo_activation")
     if tattoo_activation == True:
