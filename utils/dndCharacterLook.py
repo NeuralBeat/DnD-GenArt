@@ -3,17 +3,18 @@ from utils.dndRace import *
 
 def select_character_look():
     #Intitialize default attributes
-    default_sex = st.session_state.get('selected_sex', '')
-    default_age = st.session_state.get('selected_age', '')
-    default_physique = st.session_state.get('selected_physique', '')
-    default_skin_color = st.session_state.get('selected_age', '')
-    default_scale_color = st.session_state.get('selected_age', '')
-    default_skin_taint = st.session_state.get('selected_age', '')
-    default_hair_color = st.session_state.get('selected_age', '')
-    default_hair_length = st.session_state.get('selected_age', '')
-    default_hair_style_short = st.session_state.get('selected_age', '')
-    default_hair_style_long = st.session_state.get('selected_age', '')
-    default_beard_style = st.session_state.get('selected_age', '')
+    default_name = st.session_state.get('selected_name', 'Alrik')
+    default_sex = st.session_state.get('selected_sex', 'Male')
+    default_age = st.session_state.get('selected_age', 'Adult')
+    default_physique = st.session_state.get('selected_physique', 'Average')
+    default_skin_color = st.session_state.get('selected_skin_color', '')
+    default_scale_color = st.session_state.get('selected_scale_color', '')
+    default_skin_taint = st.session_state.get('selected_skin_taint', '')
+    default_hair_color = st.session_state.get('selected_hair_color', '')
+    default_hair_length = st.session_state.get('selected_hair_length', '')
+    default_hair_style_short = st.session_state.get('selected_hair_style_short', '')
+    default_hair_style_long = st.session_state.get('selected_hair_style_long', '')
+    default_beard_style = st.session_state.get('selected_beard_style', '')
     default_accessory  = st.session_state.get('selected_accessories', '')
     default_tattoo = st.session_state.get('selected_tattoo', '')
 
@@ -39,38 +40,54 @@ def select_character_look():
     accessories = {1: 'nose rings', 2:'ear rings', 3:'eye patch', 4:'scars', 5:'bandana', 6:'war paint', 7: 'glasses', 8:'monocle'}
     tattoos = {1:'tribal', 2:'mythical', 3:'runic', 4:'norse', 5:'skull', 6: 'infernal', 7:'demonic', 8:'religious'}
 
-    # Sliders for selection
-    selected_sex = st.radio("Select Sex", options=list(sexes.values()))
-    selected_age = st.select_slider("Select Age", options=list(ages.values()))
-    selected_physique = st.select_slider("Select Physique Build", options=list(physiques.values()))
-    selected_eye_color = st.select_slider("Select Eye Color", options=list(eye_colors.values()))
+   
+    # Use columns to split the layout
+    col1, col2 = st.columns(2)
 
+    # Sliders for selection
+    with col1:
+        selected_name = st.text_input("Character Name", key='selected_name')
+        selected_age = st.select_slider("Select Age", options=list(ages.values()), key='selected_age')
+
+        
+    with col2:
+        selected_sex = st.radio("Select Sex", options=list(sexes.values()), key='selected_sex', horizontal=True)
+        selected_physique = st.select_slider("Select Physique Build", options=list(physiques.values()), key='selected_physique')
+        selected_eye_color = st.select_slider("Select Eye Color", options=list(eye_colors.values()), key='selected_eye_color') 
+        
+        
+        
     if st.session_state['selected_race'] == 'Dragonborn':
-        selected_scale_color = st.select_slider("Select Scale Color", options=list(scale_colors.values()))
+        selected_scale_color = st.select_slider("Select Scale Color", options=list(scale_colors.values()), key='selected_scale_color')
+
+    if st.session_state['selected_race'] != 'Dragonborn':
+        selected_skin_color = st.select_slider("Select Skin Color", options=list(skin_colors.values()), key='selected_skin_color')
     
     else:
-        selected_skin_color = st.select_slider("Select Skin Color", options=list(skin_colors.values()))
-        selected_skin_taint = st.select_slider("Select Taint", options=list(skin_taint.values()))
+        selected_skin_color = st.select_slider("Select Skin Color", options=list(skin_colors.values()), key='selected_skin_color')
+        selected_skin_taint = st.select_slider("Select Taint", options=list(skin_taint.values()), key='selected_skin_taint')
 
         hair_activation = st.toggle("Hair", value=default_hair_activation, key="hair_activation")
         if hair_activation == True:
-            selected_hair_length = st.selectbox("Select Hair Length", options=list(hair_length.values()))
-            selected_hair_color = st.select_slider("Select Hair Color", options=list(hair_colors.values()))
+            selected_hair_length = st.selectbox("Select Hair Length", options=list(hair_length.values()), key='selected_hair_length')
+            selected_hair_color = st.select_slider("Select Hair Color", options=list(hair_colors.values()), key='selected_hair_color')
             if selected_hair_length == 'short':
-                selected_hair_style_short = st.select_slider("Select Short Hair Style", options=list(hair_style_short.values()))
+                selected_hair_style_short = st.select_slider("Select Short Hair Style", options=list(hair_style_short.values()), key='selected_hair_style_short')
             else:
-                selected_hair_style_long = st.select_slider("Select Long Hair Style", options=list(hair_style_long.values()))
-        
-
+                selected_hair_style_long = st.select_slider("Select Long Hair Style", options=list(hair_style_long.values()), key='selected_hair_style_long')
+    
         beard_activation = st.toggle("Bearded", value=default_beard_activation, key="beard_activation")
         if beard_activation == True:
-            selected_beard_style = st.select_slider("Select Beard Style", options=list(beard_style.values()))   
+            selected_beard_style = st.select_slider("Select Beard Style", options=list(beard_style.values()), key='selected_beard_style')   
+    
+
+
+
     
     tattoo_activation = st.toggle("Tattoo", value=default_tattoo_activation, key="tattoo_activation")
     if tattoo_activation == True:
-        selected_tattoo_style = st.select_slider("Select Tattoo Style", options=list(tattoos.values()))
+        selected_tattoo_style = st.select_slider("Select Tattoo Style", options=list(tattoos.values()), key='selected_tattoo_style')
 
     accessories_activation = st.toggle("Accessories", value=default_accessory_activation, key="accessories_activation")
     if accessories_activation == True:    
-        selected_accessories = st.select_slider("Select Accessories", options=list(accessories.values()))
-
+        selected_accessories = st.select_slider("Select Accessories", options=list(accessories.values()), key='selected_accessories')

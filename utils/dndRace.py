@@ -68,11 +68,11 @@ def select_race():
             selected_subrace = ''
         st.session_state['selected_subrace'] = selected_subrace
 
-        with col2:
-            # Create three columns for centering the image
-            spacer1, image_col, spacer2 = st.columns([1, 2, 1])
-            with image_col:
-                # Display image based on selected class
-                if selected_race in race_images:
-                    image_path = os.path.join(images_folder, race_images[selected_race])
-                    st.image(image_path, caption=None, width=140, output_format='PNG')
+    with col2:
+        # Create three columns for centering the image
+        spacer1, image_col, spacer2 = st.columns([1, 2, 1])
+        with image_col:
+            # Display image based on selected class
+            if selected_race in race_images:
+                image_path = os.path.join(images_folder, race_images[selected_race])
+                st.image(image_path, caption=None, width=140, output_format='PNG')

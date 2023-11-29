@@ -54,7 +54,7 @@ def select_class():
     if 'selected_subclass' not in st.session_state:
         st.session_state['selected_subclass'] = None
 
-        # Use columns to split the layout
+    # Use columns to split the layout
     col1, col2 = st.columns(2)
     
     with col1:

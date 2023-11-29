@@ -5,14 +5,20 @@ def select_aligment():
 
     alignments = ['','Lawful good','Neutral good', 'Chaotic good', 'Lawful neutral', 'True Neutral', 'Chaotic neutral', 'Lawful evil', 'Neutral evil', 'Chaotic evil']
 
-        ##### INIT SESSION STATES ####
+    ##### INIT SESSION STATES ####
     if 'selected_alignment' not in st.session_state:
         st.session_state['selected_alignment'] = 'Select an alignment'
 
-        #### SESSION INTERNAL CLASS SELECTION
-    st.session_state['selected_alignment'] = st.selectbox(
-    'Select your alignment', 
-    alignments, 
-    index=alignments.index(default_alignment),
-    key='alignment_selector'
-    )
+     #### SESSION INTERNAL ALIGNMENT SELECTION
+    col1,col2 = st.columns(2)
+    
+    with col1:
+        st.session_state['selected_alignment'] = st.selectbox(
+        'Select your alignment', 
+        alignments, 
+        index=alignments.index(default_alignment),
+        key='alignment_selector'
+        )
+    
+    with col2:
+        pass
