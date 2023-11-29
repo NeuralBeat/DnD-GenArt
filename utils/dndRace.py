@@ -34,41 +34,45 @@ def select_race():
         'Tiefling': 'tiefling.webp'
     }
 
-        ##### INIT SESSION STATES ####
+    ##### INIT SESSION STATES ####
+    # Initialize session states for selected race and subrace
     if 'selected_race' not in st.session_state:
-        st.session_state['selected_race'] = 'Select a race'
+        st.session_state['selected_race'] = ''
 
     if 'selected_subrace' not in st.session_state:
         st.session_state['selected_subrace'] = None
+    
 
     # Use columns to split the layout
     col1, col2 = st.columns(2)
 
     with col1:
         #### SESSION INTERNAL CLASS SELECTION
-        st.session_state['selected_race'] = st.selectbox(
+        selected_race = st.selectbox(
         'Select your Race', 
         races, 
         index=races.index(default_race),
         key='race_selector'
         )
+        st.session_state['selected_race'] = selected_race
 
         # Update subclass state based on class selection
-        if st.session_state['selected_race'] in subraces:
-            st.session_state['selected_subrace'] = st.selectbox(
+        if selected_race in subraces:
+            selected_subrace = st.selectbox(
                 'Select your Subrace or Ancestry', 
-                subraces[st.session_state['selected_race']],
-                index=0 if default_subrace not in subraces[st.session_state['selected_race']] else subraces[st.session_state['selected_race']].index(default_subrace),
+                subraces[selected_race],
+                index=0 if default_subrace not in subraces[selected_race] else subraces[selected_race].index(default_subrace),
                 key='subrace_selector'
             )
         else:
-            st.session_state['selected_subrace'] = ''
+            selected_subrace = ''
+        st.session_state['selected_subrace'] = selected_subrace
 
         with col2:
             # Create three columns for centering the image
             spacer1, image_col, spacer2 = st.columns([1, 2, 1])
             with image_col:
                 # Display image based on selected class
-                if st.session_state['selected_race'] in race_images:
-                    image_path = os.path.join(images_folder, race_images[st.session_state['selected_race']])
+                if selected_race in race_images:
+                    image_path = os.path.join(images_folder, race_images[selected_race])
                     st.image(image_path, caption=None, width=140, output_format='PNG')
