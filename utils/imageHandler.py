@@ -29,3 +29,10 @@ def save_image_from_url(image_url, folder='history'):
     except Exception as e:
         print(f"An error occurred while saving the image: {e}")
         return None
+
+def get_sorted_images(folder='history'):
+    # Get all files in the folder
+    files = [os.path.join(folder, file) for file in os.listdir(folder) if file.endswith('.webp')]
+    # Sort files by modification time, newest first
+    files.sort(key=os.path.getmtime, reverse=True)
+    return files

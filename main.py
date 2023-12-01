@@ -46,7 +46,12 @@ with tab3:
     pass
 
 with tab4:
-    pass
+    st.write("Image Timeline")
+
+    # Get and display the sorted images
+    image_files = get_sorted_images()
+    for image_file in image_files:
+        st.image(image_file, caption=os.path.basename(image_file))
 
 # Display the prompt
 if st.button("Generate Character Image"):
@@ -54,8 +59,11 @@ if st.button("Generate Character Image"):
     
     image_url = generate_image_with_dalle(dalle_prompt)
     if image_url:
-        # Assuming the API returns the URL of the generated image
+        
         st.image(image_url, caption=f"{st.session_state['selected_name']}")
         saved_image_path = save_image_from_url(image_url)
-        if saved_image_path:
-            st.write(f"Image saved at: {saved_image_path}")
+        # Store the image path in session state to access it in another tab
+        st.session_state['saved_image_path'] = saved_image_path
+
+        # Switch to the second tab to show the image
+        st.rerun()
