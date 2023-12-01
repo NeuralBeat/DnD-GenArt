@@ -5,6 +5,7 @@ from utils.dndClass import *
 from utils.dndRace import *
 from utils.dndAlignment import *
 from utils.dndCharacterLook import *
+from utils.promptCreator import *
 
 
 side_bar_img = "https://i.pinimg.com/564x/05/c1/5a/05c15aca14964af944aac1c638e1d7d2.jpg"
@@ -42,3 +43,9 @@ with tab2:
 # Tab 3: Equipment
 with tab3:
     pass
+
+# Display the prompt
+if st.button("Generate Character Prompt"):
+    dalle_prompt = create_dalle_prompt()
+    st.write("Generated Prompt for DALL-E:")
+    st.markdown(f"> {dalle_prompt}")

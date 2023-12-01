@@ -20,21 +20,21 @@ def create_dalle_prompt():
     subclass = st.session_state.get('selected_subclass', 'unknown')
 
     # Construct the prompt
-    prompt = f"A character portrait of a {age}, {sex}"
+    prompt = f"A character portrait of a {age}, {sex},"
 
     if race == 'Dragonborn':
-        prompt += f"{race} {classes}, {subclass} with {scale_color} scales."
+        prompt += f" {race} {classes}, {subclass} with {scale_color} scales."
     
     elif race == 'Tiefling':
-        prompt+= f'{race} {classes}, {subclass} with {skin_color} skin and {skin_taint} taint.'
+        prompt+= f' {race} {classes}, {subclass} with {skin_color} skin and {skin_taint} taint.'
 
     else:
-        prompt += f"{subrace} {classes}, {subclass} with {skin_color} skin and {skin_taint} taint."
+        prompt += f" {subrace} {classes}, {subclass} with {skin_color} skin and {skin_taint} taint."
 
-    prompt += f"{physique} build, "
+    prompt += f" {physique} build, "
 
     if hair_color != 'unknown':
-        prompt += f"{hair_length} {hair_color} hair,"
+        prompt += f" {hair_length} {hair_color} hair,"
 
     if hair_length != 'bald' and not 'unknown':
         prompt += f" styled in {hair_style},"
@@ -46,9 +46,8 @@ def create_dalle_prompt():
         prompt += f"{tattoo_style} tattoos,"
     
     if accessories != 'none':
-        prompt += f"wearing {accessories},"
+        prompt += f" wearing {accessories},"
 
-    prompt += f"face portrait, ultra realistic, dnd character art portrait, dark fantasy art, matte fantasy painting, deviantart artstation, by jason felix by steve argyle by tyler jacobson by peter mohrbacher by paul hedley, cinema."
+    prompt += f" face portrait, ultra realistic, dnd character art portrait, dark fantasy art, matte fantasy painting, deviantart artstation, by jason felix by steve argyle by tyler jacobson by peter mohrbacher by paul hedley, cinema."
 
-    print(prompt)
     return prompt
