@@ -1,1 +1,0 @@
-auth_token = "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"
