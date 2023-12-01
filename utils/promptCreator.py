@@ -8,6 +8,7 @@ def create_dalle_prompt():
     age = st.session_state.get('selected_age', 'unknown')
     physique = st.session_state.get('selected_physique', 'average')
     skin_color = st.session_state.get('selected_skin_color', 'unknown')
+    horns_style = st.session_state.get('selected_horns_style', 'none')
     scale_color = st.session_state.get('selected_scale_color', 'unknown')
     skin_taint = st.session_state.get('selected_skin_taint', 'none')
     hair_color = st.session_state.get('selected_hair_color', 'unknown')
@@ -25,10 +26,10 @@ def create_dalle_prompt():
     prompt = f"A character portrait of a {age}, {sex},"
 
     if race == 'Dragonborn':
-        prompt += f" {race} {classes}, {subclass} with {scale_color} scales."
+        prompt += f" humanoid dragon, lizard {classes}, {subclass} with {scale_color} scales and {horns_style}."
     
     elif race == 'Tiefling':
-        prompt+= f' {race} {classes}, {subclass} with {skin_color} skin and {skin_taint} taint.'
+        prompt+= f' {race} {classes}, {subclass} with {horns_style}, {skin_color} skin and {skin_taint} taint.'
 
     else:
         prompt += f" {subrace} {classes}, {subclass} with {skin_color} skin and {skin_taint} taint."
@@ -50,7 +51,7 @@ def create_dalle_prompt():
     if accessories != 'none':
         prompt += f" wearing {accessories},"
 
-    prompt += f" centered face portrait, avoid text, avoid watermarks, ultra realistic, dnd character art portrait, dark fantasy art, matte fantasy painting, deviantart artstation, by jason felix by steve argyle by tyler jacobson by peter mohrbacher by paul hedley, cinema."
+    prompt += f" centered face portrait, avoid duplicates, no duplicate, avoid text, no text, avoid watermarks, no watermarks, realistic, dnd character art portrait, dark fantasy art, matte fantasy painting, deviantart artstation, by jason felix by steve argyle by tyler jacobson by peter mohrbacher by paul hedley, cinema."
 
     return prompt
 

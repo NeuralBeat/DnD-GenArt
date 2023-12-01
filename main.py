@@ -6,6 +6,7 @@ from utils.dndRace import *
 from utils.dndAlignment import *
 from utils.dndCharacterLook import *
 from utils.promptCreator import *
+from utils.imageHandler import *
 
 
 side_bar_img = "https://i.pinimg.com/564x/05/c1/5a/05c15aca14964af944aac1c638e1d7d2.jpg"
@@ -54,4 +55,7 @@ if st.button("Generate Character Image"):
     image_url = generate_image_with_dalle(dalle_prompt)
     if image_url:
         # Assuming the API returns the URL of the generated image
-        st.image(image_url, caption=f"{st.session_state['selected_name']}", key="last_generated_image")
+        st.image(image_url, caption=f"{st.session_state['selected_name']}")
+        saved_image_path = save_image_from_url(image_url)
+        if saved_image_path:
+            st.write(f"Image saved at: {saved_image_path}")
