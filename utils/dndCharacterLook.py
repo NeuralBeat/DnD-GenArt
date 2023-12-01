@@ -30,9 +30,9 @@ def select_character_look():
     sexes = {1: 'Male', 2: 'Female'}
     ages = {1: 'Young', 2: 'Adult', 3: 'Seasoned', 4: 'Old'}
     physiques = {1: 'Gaunt', 2: 'Slim', 3: 'Average', 4: 'Athletic', 5: 'Muscular', 6: 'Heavy'}
-    skin_colors = {1: 'white', 2:'brown', 3:'black', 4:'red', 5:'yellow', 6:'grey', 7:'green', 8:'purple'}
+    skin_colors = {1: 'white', 2:'brown', 3:'black', 4:'red', 5:'yellow', 6:'blue', 7:'green', 8:'purple', 9:'grey'}
     scale_colors = {1: 'black', 2:'blue', 3:'green', 4:'red', 5:'white', 6:'bronze', 7:'silver', 8:'gold'}
-    skin_taint = {1: 'pale', 2: 'brown', 3: 'grey', 4: 'red', 5: 'green'}
+    skin_taint = {1: 'pale', 2: 'brown', 3: 'grey', 4: 'red', 5: 'green', 6: 'blue', 7: 'dark'}
     hair_colors = {1: 'Black', 2: 'Brown', 3: 'Blonde', 4: 'Red', 5: 'Grey', 6: 'White'}
     eye_colors = {1: 'Brown', 2: 'Blue', 3: 'Green', 4: 'Grey', 5: 'Red', 6:'Purple'}
     hair_length = {1: 'short', 3: 'long'}

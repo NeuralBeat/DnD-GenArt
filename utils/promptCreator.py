@@ -51,7 +51,7 @@ def create_dalle_prompt():
     if accessories != 'none':
         prompt += f" wearing {accessories},"
 
-    prompt += f" centered face portrait, avoid duplicates, no duplicate, avoid text, no text, avoid watermarks, no watermarks, realistic, dnd character art portrait, dark fantasy art, matte fantasy painting, deviantart artstation, by jason felix by steve argyle by tyler jacobson by peter mohrbacher by paul hedley, cinema."
+    prompt += f" close-up centered face portrait, avoid duplicates, no duplicate, avoid text, no text, avoid watermarks, no watermarks, realistic, dnd character art portrait, dark fantasy art, matte fantasy painting, deviantart artstation, by jason felix by steve argyle by tyler jacobson by peter mohrbacher by paul hedley, cinema."
 
     return prompt
 
