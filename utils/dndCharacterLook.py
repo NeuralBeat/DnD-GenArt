@@ -3,7 +3,7 @@ from utils.dndRace import *
 
 def select_character_look():
     #Intitialize default attributes
-    default_name = st.session_state.get('selected_name', 'Alrik')
+    default_name = st.session_state.get('selected_name', '')
     default_sex = st.session_state.get('selected_sex', 'Male')
     default_age = st.session_state.get('selected_age', 'Adult')
     default_physique = st.session_state.get('selected_physique', 'Average')

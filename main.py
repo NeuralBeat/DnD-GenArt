@@ -27,7 +27,7 @@ st.title("D&D DISGUISE")
 st.subheader("AI-SUPPORTED CHARACTER ART", anchor=None)
 
 # Create tabs
-tab1, tab2, tab3 = st.tabs(["CORE", "OPTICS", "EQUIPMENT"])
+tab1, tab2, tab3, tab4 = st.tabs(["CORE", "OPTICS", "EQUIPMENT", "PORTRAIT"])
 
 # Tab 1: Core Attributes (Class, Race, Alignment)
 with tab1:
@@ -44,13 +44,14 @@ with tab2:
 with tab3:
     pass
 
+with tab4:
+    pass
+
 # Display the prompt
-if st.button("Generate Character Prompt"):
+if st.button("Generate Character Image"):
     dalle_prompt = create_dalle_prompt()
-    st.write("Generated Prompt for DALL-E:")
-    st.markdown(f"> {dalle_prompt}")
     
     image_url = generate_image_with_dalle(dalle_prompt)
     if image_url:
         # Assuming the API returns the URL of the generated image
-        st.image(image_url, caption="Generated Image")
+        st.image(image_url, caption=f"{st.session_state['selected_name']}", key="last_generated_image")
