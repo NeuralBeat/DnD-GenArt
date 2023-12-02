@@ -1,3 +1,7 @@
+# D&D Character Portrait Generator
+
+![D&D Character Portrait Generator](images/generic/app-image.webp)
+
 # Overview
 
 This project is a Dungeons & Dragons (D&D) character portrait generator built using Python and Streamlit. It allows users to create custom D&D characters by selecting various attributes and features, and then generates a corresponding character portrait using OpenAI's DALL-E model. In this way you can concentrate yourself on the character and do not need to fight with finding the right wording for a "perfect prompt".
