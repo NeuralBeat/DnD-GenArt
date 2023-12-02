@@ -13,13 +13,11 @@ Interactive UI: Built with Streamlit, the application provides an easy-to-use an
 
 To run this project, you need Python installed on your system. You also need to install the required libraries:
 
-bash
-Copy code
-pip install streamlit openai pillow requests
+"pip install streamlit openai pillow requests"
 
 # Usage
 
-Start the Streamlit App:
+# Start the App:
 
 Run the app using Streamlit:
 
@@ -39,11 +37,11 @@ Switch to the "Image Timeline" tab to view all previously generated portraits.
 
 # Configuration
 
-OpenAI API Key: Store your OpenAI API key in a secrets.json file for security. The format should be: json
+OpenAI API Key: Store your OpenAI API key in a secrets.json file for security. The format should be:
 
-${
-  "openai_api_key": "your_api_key_here"
-}$
+{
+"openai_api_key": "your_api_key_here"
+}
 
 # Image Saving
 
