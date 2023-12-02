@@ -23,8 +23,6 @@ Start the Streamlit App:
 
 Run the app using Streamlit:
 
-bash
-Copy code
 streamlit run app.py
 
 # Navigate the App:
@@ -41,14 +39,16 @@ Switch to the "Image Timeline" tab to view all previously generated portraits.
 
 # Configuration
 
-OpenAI API Key: Store your OpenAI API key in a secrets.json file for security. The format should be:
+OpenAI API Key: Store your OpenAI API key in a secrets.json file for security. The format should be: json
 
-# json
+- {
+- "openai_api_key": "your_api_key_here"
+- }
 
-Copy code
-{
-"openai_api_key": "your_api_key_here"
-}
-Image Saving: Generated images are saved in the history folder. This folder is ignored in .gitignore to prevent uploading to version control.
+# Image Saving
 
-License
+Generated images are saved in the history folder. This folder is ignored in .gitignore to prevent uploading to version control.
+
+# License
+
+This project uses the GNU General Public License v3.0.
