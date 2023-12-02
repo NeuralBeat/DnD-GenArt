@@ -41,9 +41,9 @@ Switch to the "Image Timeline" tab to view all previously generated portraits.
 
 OpenAI API Key: Store your OpenAI API key in a secrets.json file for security. The format should be: json
 
-- {
-- "openai_api_key": "your_api_key_here"
-- }
+${
+  "openai_api_key": "your_api_key_here"
+}$
 
 # Image Saving
 
