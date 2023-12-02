@@ -36,11 +36,11 @@ def select_character_look():
     hair_colors = {1: 'Black', 2: 'Brown', 3: 'Blonde', 4: 'Red', 5: 'Grey', 6: 'White'}
     eye_colors = {1: 'Brown', 2: 'Blue', 3: 'Green', 4: 'Grey', 5: 'Red', 6:'Purple'}
     hair_length = {1: 'short', 3: 'long'}
-    horns_style = {1: 'goat', 2: 'ox', 3: 'capricorn', 4:'impala', 5: 'devil', 6: 'demon', 7: 'draconic', 8:'triceratops'}
+    horns_style = {1: 'goat', 2: 'bovine', 3: 'lizard', 4:'antelope', 5: 'devil', 6: 'demon', 7: 'draconic', 8:'triceratops'}
     hair_style_short = {1: 'crew cut', 2:'slicked back style', 3: 'pixie cut', 4:'short pomp', 5: 'undercut', 6:'mohawk', 7:'skin fade', 8:'mid fade taper cut', 9:'buzz cut', 10:'high & tight'}
-    hair_style_long = {1:'natural long', 2:'french braid', 3:'chignon', 4:'ponytail', 5:'braid', 6:'dreadlocks', 7:'curls', 8:'fishtail hair', 9:'surfer hair', 10:'hime cut'}
-    beard_style = {1: 'None', 2:'stubble', 3:'mustache', 4:'classic full beard', 5:'goatee', 6:'horseshoe', 7:'mutton chops', 8:'brett', 9:'braided beard', 10:'old dutch'}
-    accessories = {1: 'nose rings', 2:'ear rings', 3:'eye patch', 4:'scars', 5:'bandana', 6:'war paint', 7: 'glasses', 8:'monocle'}
+    hair_style_long = {1:'natural long', 2:'french braid', 3:'chignon', 4:'rose braid', 5:'braid', 6:'dreadlocks', 7:'curls', 8:'fishtail hair', 9:'surfer hair', 10:'hime cut'}
+    beard_style = {1: 'stubble', 2:'fu manchu', 3:'mustache', 4:'classic full beard', 5:'goatee', 6:'horseshoe', 7:'mutton chops', 8:'brett', 9:'braided beard', 10:'old dutch'}
+    accessories = {1: 'nose rings', 2:'ear rings', 3:'eye patch', 4:'scars', 5:'heterochromia', 6:'war paint', 7: 'glasses', 8:'monocle'}
     tattoos = {1:'tribal', 2:'mythical', 3:'runic', 4:'norse', 5:'skull', 6: 'infernal', 7:'demonic', 8:'religious'}
 
    
