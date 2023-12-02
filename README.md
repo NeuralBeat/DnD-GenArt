@@ -1,6 +1,6 @@
 # D&D Character Portrait Generator
 
-![D&D Character Portrait Generator](images/generic/app-image.webp)
+![D&D Character Portrait Generator](images/generic/app_image.webp)
 
 # Overview
 
