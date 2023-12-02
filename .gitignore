@@ -160,6 +160,10 @@ history/*
 !history/Example-I.webp
 !history/Example-II.webp
 !history/Example-III.webp
+!history/Example-IV.webp
+!history/Example-V.webp
+!history/Example-VI.webp
+!history/Example-VII.webp
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
