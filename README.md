@@ -23,9 +23,9 @@ To run this project, you need Python installed on your system. You also need to 
 
 # Start the App:
 
-Run the app using Streamlit:
+Run the app using Streamlit in the main project directory:
 
-streamlit run app.py
+"streamlit run main.py"
 
 # Navigate the App:
 
