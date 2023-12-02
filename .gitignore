@@ -157,6 +157,8 @@ secrets.json
 
 # all data in history folder
 history/*
+!history/Example-I.webp
+!history/Example-II.webp
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
