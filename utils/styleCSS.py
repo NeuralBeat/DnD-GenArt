@@ -26,6 +26,7 @@ def inject_css():
             }
 
         button {
+                font-family: 'Diablo', sans-serif;
                 background-color: #3c2f2f; /* Dark red background */
                 color: #ffffff; /* White text */
                 border: 1px solid #4b3832; /* Dark border */
