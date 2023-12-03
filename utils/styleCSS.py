@@ -17,13 +17,11 @@ def inject_css():
             }
                 
         body {
-                background-image: url('https://github.com/NeuralBeat/DnD-GenArt/blob/main/images/generic/diablo.jpeg');
+                background-image: url('./images/generic/cathedral.png');
                 background-size: cover; /* Cover the entire page */
                 background-repeat: no-repeat; /* Do not repeat the image */
                 background-attachment: fixed; /* Fixed background */
                 background-position: center; /* Center the background image */
-                /*background-color: #121212;*/ /* Dark background */
-                /*color: #c0c0c0;*/ /* Light grey text */
                 font-family: 'Diablo', sans-serif;
             }
 
