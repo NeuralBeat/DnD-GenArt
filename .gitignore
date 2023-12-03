@@ -155,6 +155,7 @@ cython_debug/
 # secrets JSON
 secrets.json
 
+**/.DS_Store
 # all data in history folder
 history/*
 !history/Example-I.webp
