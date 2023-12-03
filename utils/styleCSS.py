@@ -8,11 +8,21 @@ def inject_css():
                 background-image: url('images/generic/diablo.jpeg');
                 background-size: cover;
             }
+        @font-face {
+                font-family: 'Diablo';
+                src: url('https://raw.githubusercontent.com/yourusername/your-repo/main/fonts/Diablo.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+        
+        html {
+                font-family: 'Diablo', sans-serif;
+            }
                 
         body {
                 background-color: #121212; /* Dark background */
                 color: #c0c0c0; /* Light grey text */
-                font-family: 'Diablo', serif; /* Gothic-style font */
+                font-family: 'Diablo', sans-serif;
             }
 
         button {
