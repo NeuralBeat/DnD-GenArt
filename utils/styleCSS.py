@@ -12,16 +12,7 @@ def inject_css():
                 font-style: normal;
             }
         
-        html, body, h1, h2, h3, h4, h5, h6, p, div, span, input, select, button {
-                font-family: 'Diablo', sans-serif;
-            }
-                
-        body {
-                background-image: url('./images/generic/cathedral.png');
-                background-size: cover; /* Cover the entire page */
-                background-repeat: no-repeat; /* Do not repeat the image */
-                background-attachment: fixed; /* Fixed background */
-                background-position: center; /* Center the background image */
+        html, body, h1, h2, h3, h4, h5, h6, p, div, span, input, select, button, image {
                 font-family: 'Diablo', sans-serif;
             }
 
@@ -39,7 +30,12 @@ def inject_css():
 
         button:hover {
             background-color: #4b3832; /* Slightly lighter red on hover */
-        }
+            }
+        
+        /* Styling for text input fields */
+        input[type="text"] {
+                font-family: 'Diablo', sans-serif;
+            }
                 
         </style>
         """, unsafe_allow_html=True)

@@ -21,23 +21,23 @@ side_bar_img = "https://i.pinimg.com/564x/05/c1/5a/05c15aca14964af944aac1c638e1d
 
 with st.sidebar:
     st.image(side_bar_img, use_column_width=True)
-    st.title("DnD Disguise")
+    st.title("D&D CHARACTER ART")
     st.info("This application automatically generates character portraits based on the selected attributes using AI.")
 
 ########## MAIN ###########
 
-st.title("D&D DISGUISE")
+st.title("D&D CHARACTER ART")
 st.subheader("AI-SUPPORTED CHARACTER ART", anchor=None)
 
 # Create tabs
-tab1, tab2, tab3, tab4 = st.tabs(["CORE", "OPTICS", "EQUIPMENT", "PORTRAIT"])
+tab1, tab2, tab3, tab4 = st.tabs(["CORE", "OPTICS", "ARSENAL", "PORTRAIT"])
 
 # Tab 1: Core Attributes (Class, Race, Alignment)
 with tab1:
     # Call your function for selecting class, race, and alignment
     select_race()
     select_class()
-    select_aligment()
+    #select_aligment()
 
 # Tab 2: Optics (Character Look)
 with tab2:
@@ -48,7 +48,7 @@ with tab3:
     pass
 
 with tab4:
-    st.write("Image Timeline")
+    st.write("IMAGE TIMELINE")
 
     # Get and display the sorted images
     image_files = get_sorted_images()
@@ -56,11 +56,11 @@ with tab4:
         st.image(image_file, caption=os.path.basename(image_file))
 
 # Display the prompt
-if st.button("Generate Character Image"):
+if st.button("GENERATE CHARACTER IMAGE"):
     dalle_prompt = create_dalle_prompt()
     
 
-    with st.spinner('Generating portrait ...'):
+    with st.spinner('GENERATING PORTRAIT ...'):
         image_url = generate_image_with_dalle(dalle_prompt)
     
     if image_url:
