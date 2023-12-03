@@ -4,10 +4,7 @@ def inject_css():
     st.markdown("""
         <style>
             /* Dark Fantasy Theme CSS */
-        .css-18e3th9 {
-                background-image: url('images/generic/diablo.jpeg');
-                background-size: cover;
-            }
+
         @font-face {
                 font-family: 'Diablo';
                 src: url('https://raw.githubusercontent.com/yourusername/your-repo/main/fonts/Diablo.ttf') format('truetype');
@@ -20,8 +17,13 @@ def inject_css():
             }
                 
         body {
-                background-color: #121212; /* Dark background */
-                color: #c0c0c0; /* Light grey text */
+                background-image: url('https://github.com/NeuralBeat/DnD-GenArt/blob/main/images/generic/diablo.jpeg');
+                background-size: cover; /* Cover the entire page */
+                background-repeat: no-repeat; /* Do not repeat the image */
+                background-attachment: fixed; /* Fixed background */
+                background-position: center; /* Center the background image */
+                /*background-color: #121212;*/ /* Dark background */
+                /*color: #c0c0c0;*/ /* Light grey text */
                 font-family: 'Diablo', sans-serif;
             }
 
