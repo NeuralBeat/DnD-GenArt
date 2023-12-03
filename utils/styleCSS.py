@@ -15,7 +15,7 @@ def inject_css():
                 font-style: normal;
             }
         
-        html {
+        html, body, h1, h2, h3, h4, h5, h6, p, div, span, input, select, button {
                 font-family: 'Diablo', sans-serif;
             }
                 
