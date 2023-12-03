@@ -57,7 +57,10 @@ with tab4:
 if st.button("Generate Character Image"):
     dalle_prompt = create_dalle_prompt()
     
-    image_url = generate_image_with_dalle(dalle_prompt)
+
+    with st.spinner('Generating portrait ...'):
+        image_url = generate_image_with_dalle(dalle_prompt)
+    
     if image_url:
         
         st.image(image_url, caption=f"{st.session_state['selected_name']}")
