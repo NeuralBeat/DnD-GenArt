@@ -26,7 +26,7 @@ with st.sidebar:
 
 ########## MAIN ###########
 
-st.title("D&D CHARACTER ART")
+#st.title("D&D CHARACTER ART")
 st.subheader("D&D CHARACTER GENERATOR", anchor=None)
 
 # Create tabs
@@ -43,7 +43,7 @@ with tab1:
 with tab2:
     select_character_look()
 
-# Tab 3: Equipment
+# Tab 3: Equipment & Arsenal
 with tab3:
     pass
 
