@@ -27,7 +27,7 @@ with st.sidebar:
 ########## MAIN ###########
 
 st.title("D&D CHARACTER ART")
-st.subheader("AI-SUPPORTED CHARACTER ART", anchor=None)
+st.subheader("D&D CHARACTER GENERATOR", anchor=None)
 
 # Create tabs
 tab1, tab2, tab3, tab4 = st.tabs(["CORE", "OPTICS", "ARSENAL", "PORTRAIT"])

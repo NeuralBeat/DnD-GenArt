@@ -157,14 +157,15 @@ secrets.json
 
 **/.DS_Store
 # all data in history folder
-history/*
-!history/Example-I.webp
-!history/Example-II.webp
-!history/Example-III.webp
-!history/Example-IV.webp
-!history/Example-V.webp
-!history/Example-VI.webp
-!history/Example-VII.webp
+history/Potraits/*
+!history/Portraits/Example-I.webp
+!history/Portraits/Example-II.webp
+!history/Portraits/Example-III.webp
+!history/Portraits/Example-IV.webp
+!history/Portraits/Example-V.webp
+!history/Portraits/Example-VI.webp
+!history/Portraits/Example-VII.webp
+!history/Portraits/Example-VIII.webp
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
