@@ -75,4 +75,4 @@ def select_race():
             # Display image based on selected class
             if selected_race in race_images:
                 image_path = os.path.join(images_folder, race_images[selected_race])
-                st.image(image_path, caption=None, width=140, output_format='PNG')
+                st.image(image_path, caption=None, width=160, output_format='PNG')
