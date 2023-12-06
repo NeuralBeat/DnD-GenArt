@@ -49,7 +49,7 @@ def select_race():
     with col1:
         #### SESSION INTERNAL CLASS SELECTION
         selected_race = st.selectbox(
-        'Select your Race', 
+        'SELECT YOUR RACE', 
         races, 
         index=races.index(default_race),
         key='race_selector'
@@ -59,7 +59,7 @@ def select_race():
         # Update subclass state based on class selection
         if selected_race in subraces:
             selected_subrace = st.selectbox(
-                'Select your Subrace or Ancestry', 
+                'SELECT YOUR SUBRACE OR ANCESTRY', 
                 subraces[selected_race],
                 index=0 if default_subrace not in subraces[selected_race] else subraces[selected_race].index(default_subrace),
                 key='subrace_selector'

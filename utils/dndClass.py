@@ -61,7 +61,7 @@ def select_class():
 
         #### SESSION INTERNAL CLASS SELECTION
         st.session_state['selected_class'] = st.selectbox(
-        'Select your Class', 
+        'SELECT YOUR CLASS', 
         classes, 
         index=classes.index(default_class),
         key='class_selector'
@@ -70,7 +70,7 @@ def select_class():
         # Update subclass state based on class selection
         if st.session_state['selected_class'] in subclasses:
             st.session_state['selected_subclass'] = st.selectbox(
-                'Select your Subclass', 
+                'SELECT YOUR SUBCLASS', 
                 subclasses[st.session_state['selected_class']],
                 index=0 if default_subclass not in subclasses[st.session_state['selected_class']] else subclasses[st.session_state['selected_class']].index(default_subclass),
                 key='subclass_selector'
