@@ -22,17 +22,6 @@ def select_race():
     images_folder = 'images/races'
 
     # Mapping of races to their images
-    race_images = {
-        'Dragonborn': 'dragonborn.webp',
-        'Dwarf': 'dwarf.webp',
-        'Elf': 'elf.webp',
-        'Genasi': 'genasi.webp',
-        'Gnome': 'gnome.webp',
-        'Halfling': 'halfling.webp',
-        'Human': 'human.webp',
-        'Orc': 'orc.webp',
-        'Tiefling': 'tiefling.webp'
-    }
     subrace_images = {
         'Black Dragon Ancestry': 'Dragonborn/BlackDragonAncestry.webp', 
         'Blue Dragon Ancestry': 'Dragonborn/BlueDragonAncestry.webp', 
