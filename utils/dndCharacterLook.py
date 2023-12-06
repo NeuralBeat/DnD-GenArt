@@ -49,12 +49,12 @@ def select_character_look():
 
     # Sliders for selection
     with col1:
-        selected_name = st.text_input("Character Name", key='selected_name')
-        selected_age = st.select_slider("Select Age", options=list(ages.values()), key='selected_age')
+        selected_name = st.text_input("CHARACTER NAME", key='selected_name')
+        selected_age = st.select_slider("SELECT AGE", options=list(ages.values()), key='selected_age')
         if st.session_state['selected_race'] == 'Dragonborn':
-            selected_scale_color = st.select_slider("Select Scale Color", options=list(scale_colors.values()), key='selected_scale_color')
+            selected_scale_color = st.select_slider("SELECT SCALE COLOR", options=list(scale_colors.values()), key='selected_scale_color')
         if st.session_state['selected_race'] != 'Dragonborn':
-            selected_skin_color = st.select_slider("Select Skin Color", options=list(skin_colors.values()), key='selected_skin_color')
+            selected_skin_color = st.select_slider("SELECT SKIN COLOR", options=list(skin_colors.values()), key='selected_skin_color')
     
         
     with col2:
