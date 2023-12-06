@@ -33,6 +33,42 @@ def select_race():
         'Orc': 'orc.webp',
         'Tiefling': 'tiefling.webp'
     }
+    subrace_images = {
+        'Black Dragon Ancestry': 'Dragonborn/BlackDragonAncestry.webp', 
+        'Blue Dragon Ancestry': 'Dragonborn/BlueDragonAncestry.webp', 
+        'Brass Dragon Ancestry': 'Dragonborn/BrassDragonAncestry.webp', 
+        'Bronze Dragon Ancestry': 'Dragonborn/BronzeDragonAncestry.webp', 
+        'Copper Dragon Ancestry': 'Dragonborn/CopperDragonAncestry.webp', 
+        'Gold Dragon Ancestry': 'Dragonborn/GoldDragonAncestry.webp', 
+        'Green Dragon Ancestry': 'Dragonborn/GreenDragonAncestry.webp', 
+        'Red Dragon Ancestry': 'Dragonborn/RedDragonAncestry.webp', 
+        'Silver Dragon Ancestry': 'Dragonborn/SilverDragonAncestry.webp', 
+        'White Dragon Ancestry': 'Dragonborn/WhiteDragonAncestry.webp',
+        'Hill Dwarf': 'Dwarf/HillDwarf.webp',
+        'Mountain Dwarf':'Dwarf/MountainDwarf.webp', 
+        'Grey Dwarf':'Dwarf/GreyDwarf.webp',
+        'Half-Elf':'Elf/HalfElves.webp',
+        'Dark Elf':'Elf/DarkElves.webp', 
+        'Eladrin Elf':'Elf/EladrinElves.webp', 
+        'High Elf':'Elf/HighElves.webp', 
+        'Wood Elf':'Elf/WoodElves.webp',
+        'Air Genasi':'Genasi/AirGenasi.webp',
+        'Earth Genasi':'Genasi/EarthGenasi.webp', 
+        'Fire Genasi':'Genasi/FireGenasi.webp', 
+        'Water Genasi':'Genasi/WaterGenasi.webp',
+        'Rock Gnome': 'Gnome/RockGnome.webp', 
+        'Forest Gnome':'Gnome/ForestGnome.webp', 
+        'Deep Gnome':'Gnome/DeepGnome.webp',
+        'Lightfoot Halfling':'Halfling/LightfootHalfling.webp', 
+        'Stout Halfling':'Halfling/StoutHalfling.webp',
+        'Human':'Human/Human.webp',
+        'Aasimar':'Human/Aasimar.webp',
+        'Half-Orc':'Orc/HalfOrc.webp',
+        'Orc':'Orc/Orc.webp',
+        'Bloodline of Asmodeus': 'Tiefling/AsmodeusTiefling.webp', 
+        'Bloodline of Mephistopheles':'Tiefling/MephistophelesTiefling.webp', 
+        'Bloodline of Zariel': 'Tiefling/ZarielTiefling.webp'
+    }
 
     ##### INIT SESSION STATES ####
     # Initialize session states for selected race and subrace
@@ -40,7 +76,7 @@ def select_race():
         st.session_state['selected_race'] = ''
 
     if 'selected_subrace' not in st.session_state:
-        st.session_state['selected_subrace'] = None
+        st.session_state['selected_subrace'] = ''
     
 
     # Use columns to split the layout
@@ -58,6 +94,7 @@ def select_race():
 
         # Update subclass state based on class selection
         if selected_race in subraces:
+
             selected_subrace = st.selectbox(
                 'SELECT YOUR SUBRACE OR ANCESTRY', 
                 subraces[selected_race],
@@ -73,6 +110,6 @@ def select_race():
         spacer1, image_col, spacer2 = st.columns([1, 2, 1])
         with image_col:
             # Display image based on selected class
-            if selected_race in race_images:
-                image_path = os.path.join(images_folder, race_images[selected_race])
+            if selected_subrace in subrace_images:
+                image_path = os.path.join(images_folder, subrace_images[selected_subrace])
                 st.image(image_path, caption=None, width=160, output_format='PNG')
