@@ -53,7 +53,7 @@ with tab4:
     # Get and display the sorted images
     image_files = get_sorted_images()
     for image_file in image_files:
-        st.image(image_file, caption=os.path.basename(image_file))
+        st.image(image_file, width = 275, caption=os.path.basename(image_file))
 
 # Display the prompt
 if st.button("GENERATE CHARACTER IMAGE"):

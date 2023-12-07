@@ -5,13 +5,14 @@ def select_race():
     default_race = st.session_state.get('selected_race', '')
     default_subrace = st.session_state.get('selected_subrace', '')
 
-    races = ['','Dragonborn','Dwarf','Elf','Genasi', 'Gnome', 'Halfling', 'Human', 'Orc','Tiefling']
+    races = ['','Dragonborn','Dwarf','Elf','Genasi', 'Gith', 'Gnome', 'Halfling', 'Human', 'Orc','Tiefling']
 
     subraces = {
         'Dragonborn': ['Black Dragon Ancestry', 'Blue Dragon Ancestry', 'Brass Dragon Ancestry', 'Bronze Dragon Ancestry', 'Copper Dragon Ancestry', 'Gold Dragon Ancestry', 'Green Dragon Ancestry', 'Red Dragon Ancestry', 'Silver Dragon Ancestry', 'White Dragon Ancestry'],
         'Dwarf': ['Hill Dwarf', 'Mountain Dwarf', 'Grey Dwarf'],
         'Elf': ['Half-Elf','Dark Elf', 'Eladrin Elf', 'High Elf', 'Wood Elf'],
         'Genasi': ['Air Genasi', 'Earth Genasi', 'Fire Genasi', 'Water Genasi'],
+        'Gith': ['Githyanki', 'Githzerai'],
         'Gnome': ['Rock Gnome', 'Forest Gnome', 'Deep Gnome'],
         'Halfling': ['Lightfoot Halfling', 'Stout Halfling'],
         'Human': ['Human', 'Aasimar'],
@@ -45,6 +46,8 @@ def select_race():
         'Earth Genasi':'Genasi/EarthGenasi.webp', 
         'Fire Genasi':'Genasi/FireGenasi.webp', 
         'Water Genasi':'Genasi/WaterGenasi.webp',
+        'Githyanki': 'Gith/Githyanki.webp',
+        'Githzerai': 'Gith/Githzrerai.webp',
         'Rock Gnome': 'Gnome/RockGnome.webp', 
         'Forest Gnome':'Gnome/ForestGnome.webp', 
         'Deep Gnome':'Gnome/DeepGnome.webp',
