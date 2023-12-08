@@ -47,7 +47,7 @@ def select_race():
         'Fire Genasi':'Genasi/FireGenasi.webp', 
         'Water Genasi':'Genasi/WaterGenasi.webp',
         'Githyanki': 'Gith/Githyanki.webp',
-        'Githzerai': 'Gith/Githzrerai.webp',
+        'Githzerai': 'Gith/Githzerai.webp',
         'Rock Gnome': 'Gnome/RockGnome.webp', 
         'Forest Gnome':'Gnome/ForestGnome.webp', 
         'Deep Gnome':'Gnome/DeepGnome.webp',
