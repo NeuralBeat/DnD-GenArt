@@ -80,7 +80,8 @@ def select_race():
         'SELECT YOUR RACE', 
         races, 
         index=races.index(default_race),
-        key='race_selector'
+        key='race_selector',
+        on_change=on_race_change
         )
         st.session_state['selected_race'] = selected_race
 
@@ -91,7 +92,8 @@ def select_race():
                 'SELECT YOUR SUBRACE OR ANCESTRY', 
                 subraces[selected_race],
                 index=0 if default_subrace not in subraces[selected_race] else subraces[selected_race].index(default_subrace),
-                key='subrace_selector'
+                key='subrace_selector',
+                on_change=on_subrace_change
             )
         else:
             selected_subrace = ''
@@ -105,3 +107,11 @@ def select_race():
             if selected_subrace in subrace_images:
                 image_path = os.path.join(images_folder, subrace_images[selected_subrace])
                 st.image(image_path, caption=None, width=160, output_format='PNG')
+
+def on_race_change():
+    selected_race = st.session_state.race_selector
+    st.session_state['selected_race'] = selected_race
+    st.session_state['selected_subrace'] = None
+
+def on_subrace_change():
+    st.session_state['selected_subrace'] = st.session_state.subrace_selector

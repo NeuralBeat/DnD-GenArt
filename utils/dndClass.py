@@ -64,7 +64,8 @@ def select_class():
         'SELECT YOUR CLASS', 
         classes, 
         index=classes.index(default_class),
-        key='class_selector'
+        key='class_selector',
+        on_change=on_class_change
         )
 
         # Update subclass state based on class selection
@@ -73,7 +74,8 @@ def select_class():
                 'SELECT YOUR SUBCLASS', 
                 subclasses[st.session_state['selected_class']],
                 index=0 if default_subclass not in subclasses[st.session_state['selected_class']] else subclasses[st.session_state['selected_class']].index(default_subclass),
-                key='subclass_selector'
+                key='subclass_selector',
+                on_change=on_subclass_change
             )
         else:
             st.session_state['selected_subclass'] = ''
@@ -86,3 +88,11 @@ def select_class():
             if st.session_state['selected_class'] in class_images:
                 image_path = os.path.join(images_folder, class_images[st.session_state['selected_class']])
                 st.image(image_path, caption=None, width=160)
+
+def on_class_change():
+    selected_class = st.session_state.class_selector
+    st.session_state['selected_class'] = selected_class
+    st.session_state['selected_subclass'] = None
+
+def on_subclass_change():
+    st.session_state['selected_subclass'] = st.session_state.subclass_selector
