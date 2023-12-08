@@ -13,16 +13,14 @@ def CharacterGenerator():
 
     #inject_css()
 
-
-    title_img = 'images/generic/DnDMain.webp'
-    ########### NAVIGATIONBAR ###########
-    # NONE
+    title_img = 'images/generic/DnDMask.webp'
+ 
     ########## MAIN ###########
 
     spacer1, header_col, spacer2 = st.columns([1,2,1])
-    #st.title("D&D CHARACTER ART")
+
     with header_col:
-        st.image(title_img, width=360)
+        st.image(title_img, width=200)
 
     st.subheader("D&D CHARACTER GENERATOR", anchor=None)
 
@@ -73,3 +71,6 @@ def CharacterGenerator():
         image_files = get_sorted_images()
         for image_file in image_files:
             st.image(image_file, width = 275, caption=os.path.basename(image_file))
+
+    if st.button("RETURN TO MENU", key="return_main_from_chargen"):
+        st.session_state['selected_page'] = None

@@ -12,7 +12,7 @@ def inject_css():
                 font-style: normal;
             }
         
-        html, body, h1, h2, h3, h4, h5, h6, p, div, span, input, select, button, image {
+        html, body, h1, h2, h3, h4, h5, h6, p, div, span, input, select, button, image, image_select {
                 font-family: 'Diablo', sans-serif;
             }
 
@@ -36,6 +36,14 @@ def inject_css():
         input[type="text"] {
                 font-family: 'Diablo', sans-serif;
             }
-                
+
+        image_select {
+            font-family: 'Diablo', sans-serif;
+            }  
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Diablo', sans-serif;
+            text-align: center;
+            }        
         </style>
         """, unsafe_allow_html=True)
