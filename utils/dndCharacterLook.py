@@ -43,13 +43,12 @@ def select_character_look():
     accessories = {1: 'nose rings', 2:'ear rings', 3:'eye patch', 4:'scars', 5:'heterochromia', 6:'war paint', 7: 'glasses', 8:'monocle'}
     tattoos = {1:'tribal', 2:'mythical', 3:'runic', 4:'norse', 5:'skull', 6: 'infernal', 7:'demonic', 8:'religious'}
 
-   
+    selected_sex = st.radio("SELECT SEX", options=list(sexes.values()), key='selected_sex', horizontal=True)
     # Use columns to split the layout
     col1, col2 = st.columns(2)
 
     # Sliders for selection
     with col1:
-        selected_name = st.text_input("CHARACTER NAME", key='selected_name')
         selected_age = st.select_slider("SELECT AGE", options=list(ages.values()), key='selected_age')
         if st.session_state['selected_race'] == 'Dragonborn':
             selected_scale_color = st.select_slider("SELECT SCALE COLOR", options=list(scale_colors.values()), key='selected_scale_color')
@@ -58,7 +57,6 @@ def select_character_look():
     
         
     with col2:
-        selected_sex = st.radio("SELECT SEX", options=list(sexes.values()), key='selected_sex', horizontal=True)
         selected_physique = st.select_slider("SELECT PHYSIQUE", options=list(physiques.values()), key='selected_physique')
         selected_eye_color = st.select_slider("SELECT EYE COLOR", options=list(eye_colors.values()), key='selected_eye_color') 
         if st.session_state['selected_race'] != 'Dragonborn':
@@ -90,3 +88,9 @@ def select_character_look():
     accessories_activation = st.toggle("ACCESSORIES", value=default_accessory_activation, key="accessories_activation")
     if accessories_activation == True:    
         selected_accessories = st.select_slider("SELECT ACCESSORIES", options=list(accessories.values()), key='selected_accessories')
+
+
+def select_name():
+        default_name = st.session_state.get('selected_name', '')
+
+        selected_name = st.text_input("CHARACTER NAME", key='selected_name')

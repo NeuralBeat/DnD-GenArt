@@ -157,7 +157,7 @@ secrets.json
 
 **/.DS_Store
 # all data in history folder
-history/Potraits/*
+history/Portraits/*
 !history/Portraits/Example-I.webp
 !history/Portraits/Example-II.webp
 !history/Portraits/Example-III.webp
