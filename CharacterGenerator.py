@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-import glob
+from utils.specifc_callbacks import *
 from utils.dndClass import *
 from utils.dndRace import *
 from utils.dndAlignment import *
@@ -17,7 +17,7 @@ def CharacterGenerator():
  
     ########## MAIN ###########
 
-    spacer1, header_col, spacer2 = st.columns([1,2,1])
+    spacer1, header_col, spacer2 = st.columns([1,1,1])
 
     with header_col:
         st.image(title_img, width=200)
@@ -72,5 +72,4 @@ def CharacterGenerator():
         for image_file in image_files:
             st.image(image_file, width = 275, caption=os.path.basename(image_file))
 
-    if st.button("RETURN TO MENU", key="return_main_from_chargen"):
-        st.session_state['selected_page'] = None
+    st.button("RETURN TO MENU", key="return_main_from_chargen", on_click=update_return_to_main_menu)

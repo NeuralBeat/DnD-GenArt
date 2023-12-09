@@ -1,7 +1,8 @@
 import os
 import base64
+import streamlit as st
 from utils.styleCSS import *
-from streamlit_image_select import image_select
+from utils.specifc_callbacks import *
 from st_clickable_images import clickable_images
 from CharacterGenerator import *
 from DungeonMaster import *
@@ -36,14 +37,9 @@ def main_menu():
         img_style={"margin": "5px", "height": "200px"}
     )
 
-    # Handle actions based on clicked image
-    if selected_main_image == 0:
-        st.session_state['selected_page'] = 'continue_journey'
-    elif selected_main_image == 1:
-        st.session_state['selected_page'] = 'character_generator'
-    elif selected_main_image == 2:
-        st.session_state['selected_page'] = 'roster'
-
+    if selected_main_image != -1 and not st.session_state.get('image_processed', False):
+       st.session_state['selected_page'] = ['continue_journey', 'character_generator', 'roster'][selected_main_image]
+       st.rerun()
 
 def get_absolute_path(relative_path):
     current_dir = os.path.dirname(__file__)
@@ -61,14 +57,18 @@ def main():
 
     if st.session_state['selected_page'] == 'continue_journey':
         ContinueJourneyInfo()  # Render content for this page
+
     elif st.session_state['selected_page'] == 'character_generator':
         CharacterGenerator()  # Render content for this page
+
     elif st.session_state['selected_page'] == 'roster':
         RosterInfo()  # Render content for this page
+
     else:
         st.title("QUILL & QUEST")
         st.subheader("YOUR DUNGEONS & DRAGONS 5E COMPANION")
         main_menu()
+
 
 if __name__ == "__main__":
     main()
