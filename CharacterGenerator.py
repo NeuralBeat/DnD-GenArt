@@ -7,6 +7,7 @@ from utils.dndAlignment import *
 from utils.dndCharacterLook import *
 from utils.promptCreator import *
 from utils.imageHandler import *
+from utils.attributeHandler import *
 from utils.styleCSS import *
 
 def CharacterGenerator():
@@ -35,7 +36,7 @@ def CharacterGenerator():
         select_class()
 
     with tab2:
-        pass
+        select_attributes()
 
     # Tab 2: Optics (Character Look)
     with tab3:
