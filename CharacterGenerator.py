@@ -31,7 +31,11 @@ def CharacterGenerator():
     # Tab 1: Core Attributes (Class, Race, Alignment)
     with tab1:
         # Call your function for selecting class, race, and alignment
-        select_name()
+        col1, col2 = st.columns(2)
+        with col1:
+            select_name()
+        with col2:
+            select_level()
         select_race()
         select_class()
 

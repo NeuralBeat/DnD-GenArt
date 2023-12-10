@@ -94,3 +94,8 @@ def select_name():
         default_name = st.session_state.get('selected_name', '')
 
         selected_name = st.text_input("CHARACTER NAME", key='selected_name')
+
+def select_level():
+    default_level = st.session_state.get('selected_level', 1)
+
+    selected_level = st.number_input('LEVEL', 1, 20, key='selected_level')
