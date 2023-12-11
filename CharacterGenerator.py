@@ -12,8 +12,6 @@ from utils.styleCSS import *
 
 def CharacterGenerator():
 
-    #inject_css()
-
     title_img = 'images/generic/DnDMask.webp'
  
     ########## MAIN ###########
@@ -80,4 +78,5 @@ def CharacterGenerator():
         for image_file in image_files:
             st.image(image_file, width = 275, caption=os.path.basename(image_file))
 
+    st.divider()
     st.button("RETURN TO MENU", key="return_main_from_chargen", on_click=update_return_to_main_menu)
