@@ -5,6 +5,7 @@ from utils.dndClass import *
 from utils.dndRace import *
 from utils.dndAlignment import *
 from utils.dndCharacterLook import *
+from utils.dndArsenal import *
 from utils.promptCreator import *
 from utils.imageHandler import *
 from utils.attributeHandler import *
@@ -44,12 +45,13 @@ def CharacterGenerator():
     with tab3:
         select_character_look()
 
-    # Tab 3: Equipment & Arsenal
+    # Tab 3: Skills & Traits
     with tab4:
         pass
-
+    
+    # Tab 4: Equipment
     with tab5:
-        pass
+        select_arsenal()
 
     with tab6:
         # Display the prompt
