@@ -26,6 +26,7 @@ def main():
     else:
         st.title("QUILL & QUEST")
         st.subheader("YOUR DUNGEONS & DRAGONS 5E COMPANION")
+        st.divider()
         main_menu()
 
 
