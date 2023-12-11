@@ -26,7 +26,7 @@ def CharacterGenerator():
     st.subheader("D&D CHARACTER GENERATOR", anchor=None)
 
     # Create tabs
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["CORE", "ATTRIBUTES", "OPTICS", "ARSENAL", "PORTRAIT", "GALLERY"])
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["CORE", "ATTRIBUTES", "OPTICS", "SKILLS & TRAITS", "ARSENAL", "PORTRAIT", "SUMMARY"])
 
     # Tab 1: Core Attributes (Class, Race, Alignment)
     with tab1:
@@ -51,6 +51,9 @@ def CharacterGenerator():
         pass
 
     with tab5:
+        pass
+
+    with tab6:
         # Display the prompt
         if st.button("GENERATE CHARACTER IMAGE"):
             dalle_prompt = create_dalle_prompt()
@@ -69,7 +72,7 @@ def CharacterGenerator():
                 # Switch to the second tab to show the image
                 st.rerun()
 
-    with tab6:
+    with tab7:
         st.write("IMAGE TIMELINE")
 
         # Get and display the sorted images

@@ -44,6 +44,7 @@ def inject_css():
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Diablo', sans-serif;
             text-align: center;
-            }        
+            }       
+                
         </style>
         """, unsafe_allow_html=True)

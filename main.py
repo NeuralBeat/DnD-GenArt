@@ -5,6 +5,7 @@ from utils.specifc_callbacks import *
 
 from CharacterGenerator import *
 from DungeonMaster import *
+from Roster import *
 
 inject_css()
 
@@ -20,7 +21,7 @@ def main():
         CharacterGenerator()  # Render content for this page
 
     elif st.session_state['selected_page'] == 'roster':
-        RosterInfo()  # Render content for this page
+        Roster()  # Render content for this page
 
     else:
         st.title("QUILL & QUEST")
