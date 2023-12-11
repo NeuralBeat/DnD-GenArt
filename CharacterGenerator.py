@@ -18,8 +18,8 @@ def CharacterGenerator():
 
     spacer1, header_col, spacer2 = st.columns([1,1,1])
 
-    with header_col:
-        st.image(title_img, width=200)
+    #with header_col:
+    #    st.image(title_img, width=200)
 
     st.subheader("D&D CHARACTER GENERATOR", anchor=None)
 
