@@ -135,3 +135,6 @@ def reset_previous_bonus(attributes):
         if st.session_state.get(f'prev_bonus_{attr}'):
             st.session_state[attr] -= st.session_state[f'prev_bonus_{attr}']
             st.session_state[f'prev_bonus_{attr}'] = 0
+
+def calculate_modifiers():
+    pass
