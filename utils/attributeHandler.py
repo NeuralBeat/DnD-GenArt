@@ -59,7 +59,12 @@ def select_attributes():
             st.button("DECREASE", key=f"minus_{attr}", on_click=decrement_attribute, args=(attr,))
 
         with col3:
-            st.write(f"{st.session_state[attr]}")
+            if st.session_state[attr] >= 16:
+                st.markdown(f":green[{st.session_state[attr]}]")
+            if 10 <= st.session_state[attr] <=15:
+                st.markdown(f":yellow[{st.session_state[attr]}]")
+            if st.session_state[attr] <= 9:
+                st.markdown(f":red[{st.session_state[attr]}]")
 
         with col4:
             st.button("INCREASE", key=f"plus_{attr}", on_click=increment_attribute, args=(attr,))

@@ -9,11 +9,6 @@ def ContinueJourneyInfo():
     st.divider()
     st.warning("SOON YOUR JOURNEY WILL CONTINUE HERE. THE DUNGEON MASTER IS STILL PREPARING ...")
     st.divider()
-    st.button("RETURN TO MENU", key="return_main_from_chargen_2", on_click=update_return_to_main_menu)
-
-
-def CharacterGeneratorInfo():
-    st.write("CREATE NEW CHARACTER")
-
-def RosterInfo():
-    st.write("INSPECT YOUR ROSTER")
+    spacer3, bottom_col, spacer4 = st.columns([1,1,1])
+    with bottom_col:
+        st.button("RETURN TO MENU", key="return_main_from_chargen_2", on_click=update_return_to_main_menu)
