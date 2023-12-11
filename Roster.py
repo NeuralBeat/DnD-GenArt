@@ -1,28 +1,67 @@
 import os
+import base64
 import streamlit as st
+from st_clickable_images import clickable_images
 from main_menu import *
 from utils.imageHandler import *
 from utils.specifc_callbacks import *
 
-
 def Roster():
+    # Directory containing the character portraits
+    portraits_dir = 'history/Portraits'
+    portrait_files = sorted([file for file in os.listdir(portraits_dir) if file.endswith('.webp')], reverse=True)
+
+    # Initialize current portrait index in session state
+    if 'current_portrait_index' not in st.session_state:
+        st.session_state['current_portrait_index'] = 0
+    
     title_img = 'images/generic/DnDRoster.webp'
  
     ########## MAIN ###########
 
     spacer1, header_col, spacer2 = st.columns([1,1,1])
 
-    with header_col:
-        st.image(title_img, width=200)
+    #with header_col:
+        #st.image(title_img, width=200)
 
     st.subheader("ROSTER OF ADVENTURERS")
     st.divider()
 
-    # Get and display the sorted images
-    image_files = get_sorted_images()
-    for image_file in image_files:
-        st.image(image_file, width = 275, caption=os.path.basename(image_file))
-        st.divider()
+    lButton_col, Portrait_col, rButton_col = st.columns([1,2,1])
 
+    with Portrait_col:
+        # Display the current portrait
+        current_portrait = portrait_files[st.session_state['current_portrait_index']]
+        current_portrait_path = os.path.join(portraits_dir, current_portrait)
+        st.image(current_portrait_path, width = 250, use_column_width=True)
+
+    # Left Navigation Button
+    with lButton_col:
+        lButton_absPath = get_absolute_path('images/generic/NavigatorButtonLeft.webp')
+        left_button = get_image_as_base64(lButton_absPath)
+        clicked_left = clickable_images(
+        [left_button],
+        titles=["PREVIOUS IN ROSTER"],
+        img_style={"height": "550px"},
+        key='previous_roster_image_button'
+        )
+    # Right Navigation Button
+    with rButton_col:
+        rButton_absPath = get_absolute_path('images/generic/NavigatorButtonRight.webp')
+        right_button = get_image_as_base64(rButton_absPath)
+        clicked_right = clickable_images(
+        [right_button],
+        titles=["NEXT IN ROSTER"],
+        img_style={"height": "550px"},
+        key='next_roster_image_button'
+        )
+    
     st.divider()
     st.button("RETURN TO MENU", key="return_main_from_chargen_2", on_click=update_return_to_main_menu)
+
+    # Update the index based on button click
+    if clicked_left and st.session_state['current_portrait_index'] > 0:
+        st.session_state['current_portrait_index'] -= 1
+
+    elif clicked_right and st.session_state['current_portrait_index'] < len(portrait_files) - 1:
+        st.session_state['current_portrait_index'] += 1
