@@ -86,49 +86,41 @@ def handle_selection(category, items):
         st.session_state[f'selected_{category}'] = selected_item
 
 
-# User Interface for Selections
+# Main function to display equipment selection UI
 def select_arsenal():
-    # Render a selectbox for each equipment category
-    for category, items in equipment.items():
-        selected_item_key = f'selected_{category}'
-        item_options = list(items.keys()) if isinstance(items, dict) else items
+    select_col, show_col = st.columns(2)
 
-        selected_item = st.selectbox(f"SELECT {category}", [None] + item_options, key=selected_item_key)
+    with select_col:
+        # Iterate through each equipment category
+        for category, items in equipment.items():
+            # Call the function to handle selection for each category
+            select_equipment(category, items)
 
-        # Update the session state
-        if selected_item and selected_item in item_options:
-            st.session_state[selected_item_key] = selected_item
-
-            # Display additional attributes if applicable
-            if category == "MELEE WEAPONS" and selected_item in melee_weapons:
-                for attribute, value in melee_weapons[selected_item].items():
-                    st.write(f"{attribute}: {value}")
-            elif category == "RANGED WEAPONS" and selected_item in ranged_weapons:
-                for attribute, value in ranged_weapons[selected_item].items():
-                    st.write(f"{attribute}: {value}")
-            elif category == "ARMOR" and selected_item in armor:
-                for attribute, value in armor[selected_item].items():
-                    st.write(f"{attribute}: {value}")
-            elif category == "SHIELDS" and selected_item in shields:
-                for attribute, value in shields[selected_item].items():
-                    st.write(f"{attribute}: {value}")
-            else:
-                for attribute, value in items[selected_item].items():
-                    st.write(f"{attribute}: {value}")
-            
-
-    # Button to confirm selections
+    
+    # Display selected arsenal when the confirm button is clicked
     if st.button("CONFIRM SELECTIONS"):
-        show_selected_arsenal()
+        with show_col:
+            show_selected_arsenal()
  
 
 # Display Selected Equipment
 def show_selected_arsenal():
-    
-    st.subheader("YOUR SELECTED ARSENAL")
+    st.subheader("SELECTED ARSENAL")
     for category in equipment.keys():
         selected_item_key = f'selected_{category}'
         if selected_item_key in st.session_state and st.session_state[selected_item_key]:
-            st.write(f"{category}: {st.session_state[selected_item_key]}")
+            # Filter out None values and convert list of selected items to a string
+            selected_items_str = ', '.join(filter(None, st.session_state[selected_item_key]))
+            st.write(f"{category}: {selected_items_str}")
 
+# Function to handle the selection of a specific equipment category
+def select_equipment(category, items):
+    # Determine if 'items' is a dictionary or list and create item options accordingly
+    item_options = list(items.keys()) if isinstance(items, dict) else items
 
+    # Display the selectbox for the category
+    selected_item = st.multiselect(f"SELECT {category}", item_options, key=f'select_{category}')
+
+    # Update the session state when a new item is selected
+    if selected_item:
+        st.session_state[f'selected_{category}'] = selected_item
