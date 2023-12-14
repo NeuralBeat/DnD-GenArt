@@ -9,6 +9,7 @@ from utils.dndArsenal import *
 from utils.promptCreator import *
 from utils.imageHandler import *
 from utils.attributeHandler import *
+from utils.dndSkillsAndTraits import *
 from utils.styleCSS import *
 
 def CharacterGenerator():
@@ -47,7 +48,8 @@ def CharacterGenerator():
 
     # Tab 3: Skills & Traits
     with tab4:
-        pass
+        select_class_skills()
+        display_skills()
     
     # Tab 4: Equipment
     with tab5:
