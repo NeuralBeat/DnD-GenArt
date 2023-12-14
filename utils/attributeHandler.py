@@ -50,7 +50,7 @@ def select_attributes():
     apply_racial_bonus()
     st.divider()
     for attr in attributes:
-        col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
+        col1, col2, col3, col4 = st.columns([1.75, 1, 1.75, 1])
         
         with col1:
             st.write(f"{attr}")
@@ -59,12 +59,15 @@ def select_attributes():
             st.button("DECREASE", key=f"minus_{attr}", on_click=decrement_attribute, args=(attr,))
 
         with col3:
-            if st.session_state[attr] >= 16:
-                st.markdown(f":green[{st.session_state[attr]}]")
-            if 10 <= st.session_state[attr] <=15:
-                st.markdown(f":yellow[{st.session_state[attr]}]")
-            if st.session_state[attr] <= 9:
-                st.markdown(f":red[{st.session_state[attr]}]")
+            st.session_state[f'{attr}_MOD'] = calculate_modifier(st.session_state[attr])
+            lSpacer, centerCol, rSpacer = st.columns([1,2,1])
+            with centerCol:
+                if st.session_state[attr] >= 16:
+                    st.markdown(f"{st.session_state[attr]} / :green[{st.session_state[f'{attr}_MOD']:+d}]")
+                if 10 <= st.session_state[attr] <=15:
+                    st.markdown(f"{st.session_state[attr]} / :yellow[{st.session_state[f'{attr}_MOD']:+d}]")
+                if st.session_state[attr] <= 9:
+                    st.markdown(f"{st.session_state[attr]} / :red[{st.session_state[f'{attr}_MOD']:+d}]")
 
         with col4:
             st.button("INCREASE", key=f"plus_{attr}", on_click=increment_attribute, args=(attr,))
@@ -136,5 +139,5 @@ def reset_previous_bonus(attributes):
             st.session_state[attr] -= st.session_state[f'prev_bonus_{attr}']
             st.session_state[f'prev_bonus_{attr}'] = 0
 
-def calculate_modifiers():
-    pass
+def calculate_modifier(attribute_value):
+    return (attribute_value - 10) // 2

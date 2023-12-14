@@ -58,19 +58,18 @@ def CharacterGenerator():
         if st.button("GENERATE CHARACTER IMAGE"):
             dalle_prompt = create_dalle_prompt()
 
+            spacer_left, image_col, spacer_right = st.columns([1,2,1])
 
-            with st.spinner('GENERATING PORTRAIT ...'):
-                image_url = generate_image_with_dalle(dalle_prompt)
+            with image_col:
+                with st.spinner('GENERATING PORTRAIT ...'):
+                    image_url = generate_image_with_dalle(dalle_prompt)
 
-            if image_url:
+                if image_url:
             
-                st.image(image_url, caption=f"{st.session_state['selected_name']}")
-                saved_image_path = save_image_from_url(image_url)
-                # Store the image path in session state to access it in another tab
-                st.session_state['saved_image_path'] = saved_image_path
-
-                # Switch to the second tab to show the image
-                st.rerun()
+                    st.image(image_url, caption=f"{st.session_state['selected_name']}")
+                    saved_image_path = save_image_from_url(image_url)
+                    # Store the image path in session state to access it in another tab
+                    st.session_state['saved_image_path'] = saved_image_path
 
     with tab7:
         st.write("IMAGE TIMELINE")

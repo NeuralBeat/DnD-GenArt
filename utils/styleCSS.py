@@ -46,5 +46,10 @@ def inject_css():
             text-align: center;
             }       
                 
+        markdown {
+                font-family: 'Diablo', sans-serif;
+                text-align: center;
+                font-size: 16px;
+        }
         </style>
         """, unsafe_allow_html=True)
