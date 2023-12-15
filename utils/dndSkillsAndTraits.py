@@ -92,7 +92,7 @@ def select_class_skills():
 
     if selected_class and selected_class in class_skill_proficiencies:
         num_skills = class_skill_choices[selected_class]
-        st.write(f"SELECT SKILLS - {selected_class}:")
+        st.write(f"SELECT PROFICIENCIES - {selected_class}:")
         available_skills = class_skill_proficiencies[selected_class]
 
         # Reset previous skill choices when class changes
@@ -108,4 +108,6 @@ def select_class_skills():
             chosen_skill = st.selectbox(f"Skill {i+1}", [None] + available_skills, key=skill_key)
             if chosen_skill:
                 st.session_state[session_state_key] = chosen_skill
+        
+        st.divider()
 
