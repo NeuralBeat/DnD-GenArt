@@ -57,6 +57,22 @@ class_skill_choices = {
     "Wizard": 2,
 }
 
+background_skill_proficiencies = {
+    "Acolyte": ["INSIGHT", "RELIGION"],
+    "Charlatan": ["DECEPTION", "SLEIGHT OF HAND"],
+    "Criminal/Spy": ["DECEPTION", "STEALTH"],
+    "Entertainer": ["ACROBATICS", "PERFORMANCE"],
+    "Folk Hero": ["ANIMAL HANDLING", "SURVIVAL"],
+    "Guild Artisan": ["INSIGHT", "PERSUASION"],
+    "Hermit": ["MEDICINE", "RELIGION"],
+    "Noble": ["HISTORY", "PERSUASION"],
+    "Outlander": ["ATHLETICS", "SURVIVAL"],
+    "Sage": ["ARCANA", "HISTORY"],
+    "Sailor": ["ATHLETICS", "PERCEPTION"],
+    "Soldier": ["ATHLETICS", "INTIMIDATION"],
+    "Urchin": ["SLEIGHT OF HAND", "STEALTH"]
+}
+
 def calculate_skill_modifier(skill, proficiency_bonus=0, proficient=False):
     ability = skills[skill]
     ability_modifier = calculate_modifier(st.session_state[ability])
@@ -74,6 +90,11 @@ def calculate_skill_modifier(skill, proficiency_bonus=0, proficient=False):
         if st.session_state.get(session_state_key) == skill:
             proficient = True
             break
+    
+    # Check background skill proficiencies
+    selected_background = st.session_state.get('selected_background', None)
+    if selected_background and skill in background_skill_proficiencies.get(selected_background, []):
+        proficient = True
 
     if proficient:
         return ability_modifier + proficiency_bonus
