@@ -157,7 +157,7 @@ def apply_traits(selected_traits):
     for trait in selected_traits:
         st.session_state[trait] = True
 
-def select_racial_traits():
+def display_racial_traits():
     selected_subrace = st.session_state.get('selected_subrace', None)
     if selected_subrace and selected_subrace in subracial_traits:
         apply_traits(subracial_traits[selected_subrace])
@@ -165,3 +165,19 @@ def select_racial_traits():
         traits_list = subracial_traits[selected_subrace]
         traits_str = ', '.join(traits_list)
         st.caption(f":red[RACIAL TRAITS:] {traits_str}")
+
+background_proficiencies = {
+    "Acolyte": ["Insight", "Religion"],
+    "Charlatan": ["Deception", "Sleight of Hand"],
+    "Criminal/Spy": ["Deception", "Stealth"],
+    "Entertainer": ["Acrobatics", "Performance"],
+    "Folk Hero": ["Animal Handling", "Survival"],
+    "Guild Artisan": ["Insight", "Persuasion"],
+    "Hermit": ["Medicine", "Religion"],
+    "Noble": ["History", "Persuasion"],
+    "Outlander": ["Athletics", "Survival"],
+    "Sage": ["Arcana", "History"],
+    "Sailor": ["Athletics", "Perception"],
+    "Soldier": ["Athletics", "Intimidation"],
+    "Urchin": ["Sleight of Hand", "Stealth"]
+}

@@ -40,7 +40,7 @@ def CharacterGenerator():
         select_class()
         st.divider()
         if st.session_state['selected_race']!= None:
-            select_racial_traits()
+            display_racial_traits()
 
     with tab2:
         select_attributes()
