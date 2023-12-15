@@ -116,6 +116,75 @@ def on_race_change():
 def on_subrace_change():
     st.session_state['selected_subrace'] = st.session_state.subrace_selector
 
+def apply_traits(selected_traits):
+    for trait in selected_traits:
+        st.session_state[trait] = True
+
+def display_racial_traits():
+    selected_subrace = st.session_state.get('selected_subrace', None)
+    if selected_subrace and selected_subrace in subracial_traits:
+        apply_traits(subracial_traits[selected_subrace])
+        
+        traits_list = subracial_traits[selected_subrace]
+        traits_str = ', '.join(traits_list)
+        st.caption(f":red[RACIAL TRAITS:] {traits_str}")
+
+# Backgrounds and their associated skill proficiencies
+backgrounds = {
+    "": [""],
+    "Acolyte": ["Insight", "Religion"],
+    "Charlatan": ["Deception", "Sleight of Hand"],
+    "Criminal/Spy": ["Deception", "Stealth"],
+    "Entertainer": ["Acrobatics", "Performance"],
+    "Folk Hero": ["Animal Handling", "Survival"],
+    "Guild Artisan": ["Insight", "Persuasion"],
+    "Hermit": ["Medicine", "Religion"],
+    "Noble": ["History", "Persuasion"],
+    "Outlander": ["Athletics", "Survival"],
+    "Sage": ["Arcana", "History"],
+    "Sailor": ["Athletics", "Perception"],
+    "Soldier": ["Athletics", "Intimidation"],
+    "Urchin": ["Sleight of Hand", "Stealth"]
+}
+
+def select_background():
+    # Initialize the session state for selected background if it's not already set
+    if 'selected_background' not in st.session_state:
+        st.session_state['selected_background'] = None
+
+    #default_background = st.session_state.get('selected_class', '')
+    background_choices = list(backgrounds.keys())
+    # Use the session state variable as the default value in the selectbox
+    selected_background = st.selectbox(
+        'SELECT YOUR BACKGROUND',
+        options=background_choices,
+        index=0 if st.session_state['selected_background'] is None else list(backgrounds.keys()).index(st.session_state['selected_background']),
+        key='background_selector',
+        on_change=on_background_change
+    )
+
+    # Update the session state based on the selection
+    st.session_state['selected_background'] = selected_background
+
+def on_background_change():
+    st.session_state['selected_background'] = st.session_state.background_selector
+
+background_proficiencies = {
+    "Acolyte": ["INSIGHT", "RELIGION"],
+    "Charlatan": ["DECEPTION", "SLEIGHT OF HAND"],
+    "Criminal/Spy": ["DECEPTION", "STEALTH"],
+    "Entertainer": ["ACROBATICS", "PERFORMANCE"],
+    "Folk Hero": ["ANIMAL HANDLING", "SURVIVAL"],
+    "Guild Artisan": ["INSIGHT", "PERSUASION"],
+    "Hermit": ["MEDICINE", "RELIGION"],
+    "Noble": ["HISTORY", "PERSUASION"],
+    "Outlander": ["ATHLETICS", "SURVIVAL"],
+    "Sage": ["ARCANA", "HISTORY"],
+    "Sailor": ["ATHLETICS", "PERCEPTION"],
+    "Soldier": ["ATHLETICS", "INTIMIDATION"],
+    "Urchin": ["SLEIGHT OF HAND", "STEALTH"]
+}
+
 subracial_traits = {
     "Black Dragon Ancestry": ["Breath Weapon (Acid)", "Damage Resistance (Acid)"],
     "Blue Dragon Ancestry": ["Breath Weapon (Lightning)", "Damage Resistance (Lightning)"],
@@ -151,33 +220,4 @@ subracial_traits = {
     "Forest Gnome": ["Darkvision", "Gnome Cunning"],
     "Rock Gnome": ["Darkvision", "Gnome Cunning"],
     "Deep Gnome": ["Darkvision", "Gnome Cunning"],
-}
-
-def apply_traits(selected_traits):
-    for trait in selected_traits:
-        st.session_state[trait] = True
-
-def display_racial_traits():
-    selected_subrace = st.session_state.get('selected_subrace', None)
-    if selected_subrace and selected_subrace in subracial_traits:
-        apply_traits(subracial_traits[selected_subrace])
-        
-        traits_list = subracial_traits[selected_subrace]
-        traits_str = ', '.join(traits_list)
-        st.caption(f":red[RACIAL TRAITS:] {traits_str}")
-
-background_proficiencies = {
-    "Acolyte": ["Insight", "Religion"],
-    "Charlatan": ["Deception", "Sleight of Hand"],
-    "Criminal/Spy": ["Deception", "Stealth"],
-    "Entertainer": ["Acrobatics", "Performance"],
-    "Folk Hero": ["Animal Handling", "Survival"],
-    "Guild Artisan": ["Insight", "Persuasion"],
-    "Hermit": ["Medicine", "Religion"],
-    "Noble": ["History", "Persuasion"],
-    "Outlander": ["Athletics", "Survival"],
-    "Sage": ["Arcana", "History"],
-    "Sailor": ["Athletics", "Perception"],
-    "Soldier": ["Athletics", "Intimidation"],
-    "Urchin": ["Sleight of Hand", "Stealth"]
 }

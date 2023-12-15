@@ -38,6 +38,8 @@ def CharacterGenerator():
             select_level()
         select_race()
         select_class()
+        select_background()
+        
         st.divider()
         if st.session_state['selected_race']!= None:
             display_racial_traits()
