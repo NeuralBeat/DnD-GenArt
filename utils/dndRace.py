@@ -116,10 +116,41 @@ def on_race_change():
 def on_subrace_change():
     st.session_state['selected_subrace'] = st.session_state.subrace_selector
 
-racial_traits = {
-    "Elf": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"],
-    "Dwarf": ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"],
-    # Add other races
+subracial_traits = {
+    "Black Dragon Ancestry": ["Breath Weapon (Acid)", "Damage Resistance (Acid)"],
+    "Blue Dragon Ancestry": ["Breath Weapon (Lightning)", "Damage Resistance (Lightning)"],
+    "Brass Dragon Ancestry": ["Breath Weapon (Fire)", "Damage Resistance (Fire)"],
+    "Bronze Dragon Ancestry": ["Breath Weapon (Lightning)", "Damage Resistance (Lightning)"],
+    "Copper Dragon Ancestry": ["Breath Weapon (Acid)", "Damage Resistance (Acid)"],
+    "Gold Dragon Ancestry": ["Breath Weapon (Fire)", "Damage Resistance (Fire)"],
+    "Green Dragon Ancestry": ["Breath Weapon (Poison)", "Damage Resistance (Poison)"],
+    "Red Dragon Ancestry": ["Breath Weapon (Fire)", "Damage Resistance (Fire)"],
+    "Silver Dragon Ancestry": ["Breath Weapon (Cold)", "Damage Resistance (Cold)"],
+    "White Dragon Ancestry": ["Breath Weapon (Cold)", "Damage Resistance (Cold)"],
+    "Aasimar": ["Darkvision", "Celestial Resistance", "Healing Hands", "Light Bearer"],
+    "Human": ["Extra Language"],
+    "Air Genasi": ["Unending Breath", "Mingle with the Wind"],
+    "Earth Genasi": ["Earth Walk", "Merge with Stone"],
+    "Fire Genasi": ["Darkvision", "Fire Resistance", "Reach to the Blaze"],
+    "Water Genasi": ["Amphibious", "Swim", "Call to the Wave"],
+    "Half-Orc": ["Darkvision", "Relentless Endurance", "Savage Attacks"],
+    "Half-Elf": ["Darkvision", "Fey Ancestry", "Skill Versatility"],
+    "Orc": ["Darkvision", "Aggressive", "Powerful Build", "Menacing"],
+    "Bloodline of Asmodeus": ["Darkvision", "Hellish Resistance", "Infernal Legacy"],
+    "Bloodline of Zariel": ["Darkvision", "Hellish Resistance", "Infernal Legacy"],
+    "Bloodline of Mephistopheles": ["Darkvision", "Hellish Resistance", "Infernal Legacy"],
+    "Lightfood Halfling": ["Lucky", "Brave", "Halfling Nimbleness"],
+    "Stout Halfling": ["Lucky", "Brave", "Halfling Nimbleness"],
+    "High Elf": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"],
+    "Wood Elf": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"],
+    "Eladrin Elf": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"],
+    "Dark Elf": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"],
+    "Hill Dwarf": ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Stonecunning", "Tool Proficiency"],
+    "Mountain Dwarf": ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Stonecunning", "Tool Proficiency"],
+    "Grey Dwarf": ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Stonecunning", "Tool Proficiency"],
+    "Forest Gnome": ["Darkvision", "Gnome Cunning"],
+    "Rock Gnome": ["Darkvision", "Gnome Cunning"],
+    "Deep Gnome": ["Darkvision", "Gnome Cunning"],
 }
 
 def apply_traits(selected_traits):
@@ -127,7 +158,12 @@ def apply_traits(selected_traits):
         st.session_state[trait] = True
 
 def select_racial_traits():
-    selected_race = st.session_state.get('selected_race', None)
-    if selected_race and selected_race in racial_traits:
-        st.caption(f"RACIAL TRAITS - {selected_race}:")
-        apply_traits(racial_traits[selected_race])
+    selected_subrace = st.session_state.get('selected_subrace', None)
+    if selected_subrace and selected_subrace in subracial_traits:
+        apply_traits(subracial_traits[selected_subrace])
+        
+        traits_list = subracial_traits[selected_subrace]
+        traits_str = ', '.join(traits_list)
+        st.caption(f":red[RACIAL TRAITS:] {traits_str}")
+        #for trait in subracial_traits[selected_subrace]:
+        #    st.caption(f"{trait},")
