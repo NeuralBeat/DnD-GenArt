@@ -38,6 +38,9 @@ def CharacterGenerator():
             select_level()
         select_race()
         select_class()
+        st.divider()
+        if st.session_state['selected_race']!= None:
+            select_racial_traits()
 
     with tab2:
         select_attributes()

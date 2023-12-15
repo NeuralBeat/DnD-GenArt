@@ -115,3 +115,19 @@ def on_race_change():
 
 def on_subrace_change():
     st.session_state['selected_subrace'] = st.session_state.subrace_selector
+
+racial_traits = {
+    "Elf": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"],
+    "Dwarf": ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"],
+    # Add other races
+}
+
+def apply_traits(selected_traits):
+    for trait in selected_traits:
+        st.session_state[trait] = True
+
+def select_racial_traits():
+    selected_race = st.session_state.get('selected_race', None)
+    if selected_race and selected_race in racial_traits:
+        st.caption(f"RACIAL TRAITS - {selected_race}:")
+        apply_traits(racial_traits[selected_race])
