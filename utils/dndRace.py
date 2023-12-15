@@ -27,7 +27,7 @@ def select_race():
         'Black Dragon Ancestry': 'Dragonborn/BlackDragonAncestry.webp', 
         'Blue Dragon Ancestry': 'Dragonborn/BlueDragonAncestry.webp', 
         'Brass Dragon Ancestry': 'Dragonborn/BrassDragonAncestry.webp', 
-        'Bronze Dragon Ancestry': 'Dragonborn/BronzeDragonAncestry.webp', 
+        'Bronze Dragon Ancestry': 'Dragonborn/CopperDragonAncestry.webp', 
         'Copper Dragon Ancestry': 'Dragonborn/CopperDragonAncestry.webp', 
         'Gold Dragon Ancestry': 'Dragonborn/GoldDragonAncestry.webp', 
         'Green Dragon Ancestry': 'Dragonborn/GreenDragonAncestry.webp', 
@@ -129,6 +129,19 @@ def display_racial_traits():
         traits_str = ', '.join(traits_list)
         st.caption(f":red[RACIAL TRAITS:] {traits_str}")
 
+
+def display_background_traits():
+    selected_background = st.session_state.get('selected_background', None)
+    if selected_background and selected_background in background_proficiencies:
+        apply_traits(background_proficiencies[selected_background])
+        apply_traits(background_traits[selected_background])
+        
+        traits_list = background_traits[selected_background]
+        traits_str = ', '.join(traits_list)
+        prof_list = background_proficiencies[selected_background]
+        prof_str = ', '.join(prof_list)
+        st.caption(f":red[BACKGROUND TRAITS:] {traits_str}, :red[BACKGROUND PROFICIENCIES:] {prof_str}")
+
 # Backgrounds and their associated skill proficiencies
 backgrounds = {
     "": [""],
@@ -168,6 +181,37 @@ def select_background():
 
 def on_background_change():
     st.session_state['selected_background'] = st.session_state.background_selector
+
+background_traits = {
+    "Acolyte": ["Shelter of the Faithful"],
+    "Charlatan": ["False Identity"],
+    "Criminal": ["Criminal Contact"],
+    "Entertainer": ["By Popular Demand"],
+    "Folk Hero": ["Rustic Hospitality"],
+    "Guild Artisan": ["Guild Membership"],
+    "Hermit": ["Discovery"],
+    "Noble": ["Position of Privilege"],
+    "Outlander": ["Wanderer"],
+    "Sage": ["Researcher"],
+    "Sailor": ["Ship's Passage"],
+    "Soldier": ["Military Rank"],
+    "Urchin": ["City Secrets"],
+    "Haunted One": ["Heart of Darkness"],
+    "Fisher": ["Fisher's Intuition"],
+    "Gladiator": ["By Popular Demand (Gladiator Variant)"],
+    "Knight": ["Retainers"],
+    "Pirate": ["Bad Reputation"],
+    "Mercenary Veteran": ["Mercenary Life"],
+    "City Watch": ["Watcher's Eye"],
+    "Clan Crafter": ["Respect of the Stout Folk"],
+    "Cloistered Scholar": ["Library Access"],
+    "Courtier": ["Court Functionary"],
+    "Faction Agent": ["Safe Haven"],
+    "Far Traveler": ["All Eyes on You"],
+    "Inheritor": ["Inheritance"],
+    "Knight of the Order": ["Knightly Regard"],
+    "Urban Bounty Hunter": ["Ear to the Ground"]
+}
 
 background_proficiencies = {
     "Acolyte": ["INSIGHT", "RELIGION"],
