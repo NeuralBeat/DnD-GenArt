@@ -131,7 +131,7 @@ subracial_traits = {
     "Human": ["Extra Language"],
     "Air Genasi": ["Unending Breath", "Mingle with the Wind"],
     "Earth Genasi": ["Earth Walk", "Merge with Stone"],
-    "Fire Genasi": ["Darkvision", "Fire Resistance", "Reach to the Blaze"],
+    "Fire Genasi": ["Darkvision", "Damage Resistance (Fire)", "Reach to the Blaze"],
     "Water Genasi": ["Amphibious", "Swim", "Call to the Wave"],
     "Half-Orc": ["Darkvision", "Relentless Endurance", "Savage Attacks"],
     "Half-Elf": ["Darkvision", "Fey Ancestry", "Skill Versatility"],
@@ -165,5 +165,3 @@ def select_racial_traits():
         traits_list = subracial_traits[selected_subrace]
         traits_str = ', '.join(traits_list)
         st.caption(f":red[RACIAL TRAITS:] {traits_str}")
-        #for trait in subracial_traits[selected_subrace]:
-        #    st.caption(f"{trait},")
