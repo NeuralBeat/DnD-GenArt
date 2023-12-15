@@ -43,18 +43,24 @@ class_skill_proficiencies = {
 def calculate_skill_modifier(skill, proficiency_bonus=0, proficient=False):
     ability = skills[skill]
     ability_modifier = calculate_modifier(st.session_state[ability])
+    proficient = False
+
+    # Check if the skill is among the chosen class skills
+    for i in range(2):  # Adjust based on the number of skills to choose
+        session_state_key = f'class_skill_{i}'
+        if st.session_state.get(session_state_key) == skill:
+            proficient = True
+            break
+
     if proficient:
         return ability_modifier + proficiency_bonus
     else:
         return ability_modifier
     
     
-def display_skills(proficiency_bonus=0):
+def display_skills(proficiency_bonus=2):
     for skill, ability in skills.items():
-        # Assume character's proficiency in some skills for demonstration purposes
-        proficient = skill in ["ACOBATICS", "ARCANA"]  # Example proficiency list
-        skill_modifier = calculate_skill_modifier(skill, proficiency_bonus, proficient)
-
+        skill_modifier = calculate_skill_modifier(skill, proficiency_bonus)
         st.write(f"{skill} ({ability[:3]}): {skill_modifier:+d}")
 
 def select_class_skills():
@@ -62,7 +68,7 @@ def select_class_skills():
     selected_class = st.session_state.get('selected_class', None)
 
     if selected_class and selected_class in class_skill_proficiencies:
-        st.write(f"Select skills for the {selected_class}:")
+        st.write(f"SELECT SKILLS - {selected_class}:")
         available_skills = class_skill_proficiencies[selected_class]
 
         # Create selectboxes for skill choices
