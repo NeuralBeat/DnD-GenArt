@@ -18,7 +18,7 @@ skills = {
     "PERFORMANCE": "CHARISMA",
     "PERSUASION": "CHARISMA",
     "RELIGION": "INTELLIGENCE",
-    "SLEIGHT OF HANDS": "DEXTERITY",
+    "SLEIGHT OF HAND": "DEXTERITY",
     "STEALTH": "DEXTERITY",
     "SURVIVAL": "WISDOM"
 }
@@ -40,13 +40,36 @@ class_skill_proficiencies = {
     "Wizard": ["ARCANA", "HISTORY", "INSIGHT", "INVESTIGATION", "MEDICINE", "RELIGION"]
 }
 
+class_skill_choices = {
+    "Artificer": 2,
+    "Barbarian": 2,
+    "Bard": 3,
+    "Blood Hunter": 2,
+    "Cleric": 2,
+    "Druid": 2,
+    "Fighter": 2,
+    "Monk": 2,
+    "Paladin": 2,
+    "Ranger": 2,
+    "Rogue": 3,
+    "Sorcerer": 2,
+    "Warlock": 2,
+    "Wizard": 2,
+}
+
 def calculate_skill_modifier(skill, proficiency_bonus=0, proficient=False):
     ability = skills[skill]
     ability_modifier = calculate_modifier(st.session_state[ability])
     proficient = False
 
+    selected_class = st.session_state.get('selected_class', None)
+    try:
+        num_skills = class_skill_choices[selected_class]
+    
+    except:
+        num_skills = 0
     # Check if the skill is among the chosen class skills
-    for i in range(2):  # Adjust based on the number of skills to choose
+    for i in range(num_skills): 
         session_state_key = f'class_skill_{i}'
         if st.session_state.get(session_state_key) == skill:
             proficient = True
@@ -68,11 +91,16 @@ def select_class_skills():
     selected_class = st.session_state.get('selected_class', None)
 
     if selected_class and selected_class in class_skill_proficiencies:
+        num_skills = class_skill_choices[selected_class]
         st.write(f"SELECT SKILLS - {selected_class}:")
         available_skills = class_skill_proficiencies[selected_class]
 
+        # Reset previous skill choices when class changes
+        for i in range(num_skills):
+            st.session_state.pop(f'class_skill_{i}', None)
+
         # Create selectboxes for skill choices
-        for i in range(2):  # Adjust based on the number of skills to choose
+        for i in range(num_skills):
             skill_key = f'class_skill_select_{i}'
             session_state_key = f'class_skill_{i}'
 
