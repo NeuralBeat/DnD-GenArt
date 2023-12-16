@@ -142,36 +142,18 @@ def display_background_traits():
         prof_str = ', '.join(prof_list)
         st.caption(f":red[BACKGROUND TRAITS:] {traits_str}, :red[BACKGROUND PROFICIENCIES:] {prof_str}")
 
-# Backgrounds and their associated skill proficiencies
-backgrounds = {
-    "": [""],
-    "Acolyte": ["Insight", "Religion"],
-    "Charlatan": ["Deception", "Sleight of Hand"],
-    "Criminal/Spy": ["Deception", "Stealth"],
-    "Entertainer": ["Acrobatics", "Performance"],
-    "Folk Hero": ["Animal Handling", "Survival"],
-    "Guild Artisan": ["Insight", "Persuasion"],
-    "Hermit": ["Medicine", "Religion"],
-    "Noble": ["History", "Persuasion"],
-    "Outlander": ["Athletics", "Survival"],
-    "Sage": ["Arcana", "History"],
-    "Sailor": ["Athletics", "Perception"],
-    "Soldier": ["Athletics", "Intimidation"],
-    "Urchin": ["Sleight of Hand", "Stealth"]
-}
-
 def select_background():
     # Initialize the session state for selected background if it's not already set
     if 'selected_background' not in st.session_state:
         st.session_state['selected_background'] = None
 
     #default_background = st.session_state.get('selected_class', '')
-    background_choices = list(backgrounds.keys())
+    background_choices = list(background_proficiencies.keys())
     # Use the session state variable as the default value in the selectbox
     selected_background = st.selectbox(
         'SELECT YOUR BACKGROUND',
         options=background_choices,
-        index=0 if st.session_state['selected_background'] is None else list(backgrounds.keys()).index(st.session_state['selected_background']),
+        index=0 if st.session_state['selected_background'] is None else list(background_proficiencies.keys()).index(st.session_state['selected_background']),
         key='background_selector',
         on_change=on_background_change
     )
@@ -198,7 +180,7 @@ background_traits = {
     "Urchin": ["City Secrets"],
     "Haunted One": ["Heart of Darkness"],
     "Fisher": ["Fisher's Intuition"],
-    "Gladiator": ["By Popular Demand (Gladiator Variant)"],
+    "Gladiator": ["By Popular Demand"],
     "Knight": ["Retainers"],
     "Pirate": ["Bad Reputation"],
     "Mercenary Veteran": ["Mercenary Life"],
@@ -214,9 +196,10 @@ background_traits = {
 }
 
 background_proficiencies = {
+    "": [],
     "Acolyte": ["INSIGHT", "RELIGION"],
     "Charlatan": ["DECEPTION", "SLEIGHT OF HAND"],
-    "Criminal/Spy": ["DECEPTION", "STEALTH"],
+    "Criminal": ["DECEPTION", "STEALTH"],
     "Entertainer": ["ACROBATICS", "PERFORMANCE"],
     "Folk Hero": ["ANIMAL HANDLING", "SURVIVAL"],
     "Guild Artisan": ["INSIGHT", "PERSUASION"],
@@ -226,7 +209,22 @@ background_proficiencies = {
     "Sage": ["ARCANA", "HISTORY"],
     "Sailor": ["ATHLETICS", "PERCEPTION"],
     "Soldier": ["ATHLETICS", "INTIMIDATION"],
-    "Urchin": ["SLEIGHT OF HAND", "STEALTH"]
+    "Urchin": ["SLEIGHT OF HAND", "STEALTH"],
+    "Haunted One": ["ARCANA", "INGESTIGATION"],
+    "Fisher": ["HISTORY", "SURVIVAL"],
+    "Gladiator": ["ACROBATICS", "PERFORMANCE"],
+    "Knight": ["HISTORY", "PERSUASION"],
+    "Pirate": ["ATHLETICS", "PERCEPTION"],
+    "Mercenary Veteran": ["ATHLETICS", "INTIMIDATION"],
+    "City Watch": ["ATHLETICS", "INSIGHT"],
+    "Clan Crafter": ["HISTORY", "INSIGHT"],
+    "Cloistered Scholar": ["HISTORY", "RELIGION"],
+    "Courtier": ["INSIGHT", "PERSUASION"],
+    "Faction Agent": ["INSIGHT", "DECEPTION"],
+    "Far Traveler": ["INSIGHT", "PERCEPTION"],
+    "Inheritor": ["SURVIVAL", "ARCANA"],
+    "Knight of the Order": ["PERSUASION", "HISTORY"],
+    "Urban Bounty Hunter": ["PERSUASION", "STEALTH"]
 }
 
 subracial_traits = {
