@@ -15,8 +15,9 @@ def main():
         st.session_state['selected_page'] = None
 
     if st.session_state['selected_page'] == 'continue_journey':
-        ContinueJourneyInfo()  # Render content for this page
-
+        #ContinueJourneyInfo()  # Render content for this page
+        DungeonMasterSuite()
+        
     elif st.session_state['selected_page'] == 'character_generator':
         CharacterGenerator()  # Render content for this page
 

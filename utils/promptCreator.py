@@ -82,3 +82,8 @@ def load_api_key():
     with open('utils/secrets.json') as file:
         data = json.load(file)
         return data['openai_api_key']
+
+def load_gemini_api_key():
+    with open('utils/secrets.json') as file:
+        data = json.load(file)
+        return data['gemini_api_key']  
